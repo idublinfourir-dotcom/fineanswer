@@ -1,0 +1,389 @@
+/* Reset and layout */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Main container */
+.register-container {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(to right, #7dd3fc, #38bdf8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.register-box {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  background: #fff;
+  overflow: hidden;
+  border-radius: 0;
+}
+
+/* Left Section */
+.register-left {
+  flex: 0 0 35%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+}
+
+.register-form {
+  width: 100%;
+  max-width: 380px;
+  text-align: left;
+}
+
+.register-form h2 {
+  font-size: 2rem;
+  color: #0369a1;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.subtext {
+  color: #0c4a6e;
+  font-size: 0.95rem;
+  margin-bottom: 25px;
+}
+
+.input-group {
+  margin-bottom: 18px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background: rgba(240, 249, 255, 0.85);
+  color: #1e293b;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.input-group input:focus {
+  background: white;
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.4);
+  color: #1e293b;
+}
+
+.input-group input::placeholder {
+  color: #94a3b8;
+  opacity: 0.8;
+}
+
+/* Buttons */
+.register-btn {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #38bdf8, #0284c7);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 25px rgba(56, 189, 248, 0.3);
+}
+
+.register-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(56, 189, 248, 0.5);
+  background: linear-gradient(135deg, #0ea5e9, #0369a1);
+}
+
+/* Google Button */
+.google-btn {
+  width: 100%;
+  margin-top: 15px;
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.google-btn img {
+  width: 20px;
+}
+
+.google-btn:hover {
+  background: #f0f9ff;
+}
+
+/* Divider */
+.divider {
+  text-align: center;
+  margin: 15px 0;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+/* Login Link */
+.login-link {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 0.9rem;
+}
+
+.login-link a {
+  color: #0284c7;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.login-link a:hover {
+  color: #0369a1;
+}
+
+/* Right Section (Image & Quote) */
+.register-right {
+  flex: 0 0 70% ;
+  position: relative;
+  background: url("https://images.unsplash.com/photo-1648980299893-4073137b1bd4?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170")
+    center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.testimonial {
+  width: 80%;
+  max-width: 480px;
+  text-align: center;
+  color: white;
+  backdrop-filter: blur(12px);
+  background: rgba(0, 0, 0, 0.45);
+  padding: 40px 30px;
+  border-radius: 20px;
+}
+
+.testimonial p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.testimonial h4 {
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.testimonial span {
+  display: block;
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin-bottom: 10px;
+}
+
+.stars {
+  font-size: 1.2rem;
+  color: gold;
+}
+.success-msg {
+  color: #0f5132;
+  background-color: #d1e7dd;
+  border: 1px solid #badbcc;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.error-msg {
+  color: #842029;
+  background-color: #f8d7da;
+  border: 1px solid #f5c2c7;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+/* RESPONSIVE STYLES */
+@media (max-width: 1024px) {
+  .register-box {
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .register-left {
+    flex: 1;
+    width: 100%;
+    padding: 40px 20px;
+  }
+
+  .register-right {
+    flex: 1;
+    width: 100%;
+    min-height: 400px;
+  }
+
+  .register-form {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .register-container {
+    background: #fff;
+  }
+
+  .register-box {
+    border-radius: 0;
+  }
+
+  .register-left {
+    padding: 35px 20px;
+  }
+
+  .register-form h2 {
+    font-size: 1.75rem;
+  }
+
+  .subtext {
+    font-size: 0.9rem;
+  }
+
+  .input-group {
+    margin-bottom: 16px;
+  }
+
+  .input-group input {
+    padding: 12px 14px;
+    font-size: 0.9rem;
+  }
+
+  .register-btn {
+    padding: 12px;
+    font-size: 0.95rem;
+  }
+
+  .register-right {
+    min-height: 350px;
+  }
+
+  .testimonial {
+    width: 90%;
+    padding: 35px 25px;
+  }
+
+  .testimonial p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .register-left {
+    padding: 30px 15px;
+  }
+
+  .register-form {
+    text-align: center;
+  }
+
+  .register-form h2 {
+    font-size: 1.5rem;
+    margin-bottom: 6px;
+  }
+
+  .subtext {
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+  }
+
+  .input-group {
+    margin-bottom: 15px;
+  }
+
+  .input-group input {
+    padding: 11px 12px;
+    font-size: 0.9rem;
+  }
+
+  .register-btn {
+    padding: 11px;
+    font-size: 0.9rem;
+  }
+
+  .login-link {
+    font-size: 0.85rem;
+    margin-top: 12px;
+  }
+
+  .register-right {
+    min-height: 300px;
+  }
+
+  .testimonial {
+    width: 95%;
+    padding: 30px 20px;
+    border-radius: 15px;
+  }
+
+  .testimonial p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 15px;
+  }
+
+  .testimonial h4 {
+    font-size: 1rem;
+  }
+
+  .testimonial span {
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+  }
+
+  .stars {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .register-left {
+    padding: 25px 15px;
+  }
+
+  .register-form h2 {
+    font-size: 1.4rem;
+  }
+
+  .input-group input {
+    padding: 10px 12px;
+    font-size: 0.85rem;
+  }
+
+  .register-btn {
+    padding: 10px;
+    font-size: 0.85rem;
+  }
+
+  .testimonial {
+    padding: 25px 18px;
+  }
+
+  .testimonial p {
+    font-size: 0.9rem;
+  }
+}

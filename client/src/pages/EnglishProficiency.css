@@ -1,0 +1,333 @@
+.ep-page {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.25rem 4rem;
+  background: #faf9ff;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* ─── Main Card ──────────────────────────────────── */
+.ep-card {
+  width: 100%;
+  max-width: 720px;
+  background: #fff;
+  border-radius: 24px;
+  border: 1px solid rgba(75, 46, 131, 0.1);
+  box-shadow: 0 8px 40px rgba(75, 46, 131, 0.1), 0 2px 8px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+  text-align: center;
+}
+
+/* ─── Hero Banner ────────────────────────────────── */
+.ep-hero {
+  background: linear-gradient(135deg, #3a2166 0%, #4b2e83 50%, #6c42b8 100%);
+  padding: 3rem 2rem 2.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.ep-hero::before,
+.ep-hero::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.12;
+  pointer-events: none;
+}
+.ep-hero::before {
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, #a78bfa, transparent 65%);
+  top: -120px;
+  right: -80px;
+}
+.ep-hero::after {
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, #60a5fa, transparent 65%);
+  bottom: -80px;
+  left: -60px;
+}
+
+.ep-icon-wrap {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1.25rem;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.25rem;
+  color: #fff;
+  position: relative;
+  z-index: 1;
+  backdrop-filter: blur(4px);
+}
+
+.ep-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.35rem 1rem;
+  border-radius: 50px;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.ep-label-dot {
+  width: 7px;
+  height: 7px;
+  background: #a78bfa;
+  border-radius: 50%;
+  animation: ep-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes ep-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.75); }
+}
+
+.ep-title {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  position: relative;
+  z-index: 1;
+}
+
+.ep-title span {
+  background: linear-gradient(90deg, #c4b5fd, #818cf8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.ep-subtitle {
+  margin: 0;
+  font-size: 0.975rem;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Body ───────────────────────────────────────── */
+.ep-body {
+  padding: 2.5rem 2.5rem 2rem;
+}
+
+.ep-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #fef3c7;
+  color: #92400e;
+  padding: 0.45rem 1.1rem;
+  border-radius: 50px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  border: 1px solid #fde68a;
+  margin-bottom: 1.5rem;
+}
+
+.ep-status-icon {
+  font-size: 0.9rem;
+}
+
+.ep-caption {
+  margin: 0 0 0.75rem;
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #1e1b4b;
+  letter-spacing: -0.02em;
+}
+
+.ep-desc {
+  margin: 0 0 2rem;
+  font-size: 0.9rem;
+  color: #6b7280;
+  line-height: 1.65;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ─── Feature Preview Cards ──────────────────────── */
+.ep-features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.85rem;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.ep-feature {
+  background: #f8f7ff;
+  border: 1px solid rgba(75, 46, 131, 0.1);
+  border-radius: 14px;
+  padding: 1rem 0.9rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.ep-feature:hover {
+  border-color: rgba(75, 46, 131, 0.28);
+  box-shadow: 0 4px 14px rgba(75, 46, 131, 0.08);
+}
+
+.ep-feature-icon {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.ep-feature-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #1e1b4b;
+  margin: 0 0 0.25rem;
+}
+
+.ep-feature-text {
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.45;
+}
+
+/* ─── App Section ────────────────────────────────── */
+.ep-app-section {
+  border-top: 1px solid rgba(75, 46, 131, 0.1);
+  background: linear-gradient(135deg, #f5f3ff 0%, #ede9ff 100%);
+  padding: 2rem 2.5rem;
+}
+
+.ep-app-inner {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  text-align: left;
+}
+
+.ep-app-icon-wrap {
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(135deg, #4b2e83, #6c42b8);
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(75, 46, 131, 0.25);
+}
+
+.ep-app-text {
+  flex: 1;
+}
+
+.ep-app-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(75, 46, 131, 0.1);
+  color: #4b2e83;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.75rem;
+  border-radius: 50px;
+  border: 1px solid rgba(75, 46, 131, 0.18);
+  margin-bottom: 0.6rem;
+}
+
+.ep-app-title {
+  margin: 0 0 0.4rem;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #1e1b4b;
+  letter-spacing: -0.02em;
+}
+
+.ep-app-desc {
+  margin: 0 0 0.9rem;
+  font-size: 0.85rem;
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+.ep-app-badges {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.ep-app-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: #fff;
+  color: #4b2e83;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.3rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid rgba(75, 46, 131, 0.18);
+  box-shadow: 0 1px 4px rgba(75, 46, 131, 0.07);
+}
+
+/* ─── Footer strip ───────────────────────────────── */
+.ep-footer {
+  background: #f8f7ff;
+  border-top: 1px solid rgba(75, 46, 131, 0.08);
+  padding: 1.25rem 2rem;
+  font-size: 0.8rem;
+  color: #9ca3af;
+  letter-spacing: 0.01em;
+}
+
+.ep-footer strong {
+  color: #4b2e83;
+}
+
+/* ─── Responsive ─────────────────────────────────── */
+@media (max-width: 600px) {
+  .ep-features {
+    grid-template-columns: 1fr;
+  }
+
+  .ep-body {
+    padding: 2rem 1.25rem 1.5rem;
+  }
+
+  .ep-hero {
+    padding: 2.25rem 1.25rem 2rem;
+  }
+
+  .ep-app-section {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .ep-app-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+}

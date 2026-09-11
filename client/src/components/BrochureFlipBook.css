@@ -1,0 +1,155 @@
+.brochure-flip-book-wrapper {
+  width: 100%;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem 3rem;
+  box-sizing: border-box;
+}
+
+.brochure-flip-book-zoom-wrapper {
+  width: 100%;
+  overflow: visible;
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem;
+}
+
+.brochure-flip-book-stage {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.brochure-flip-book-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  cursor: pointer;
+  border-radius: 4px;
+  overflow: visible;
+  transition: transform 0.2s ease;
+}
+
+.brochure-flip-book-container:focus {
+  outline: none;
+}
+
+.brochure-flip-book-inner {
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.08),
+    0 12px 40px rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+}
+
+/* Sharper text rendering */
+.brochure-flip-book-inner canvas,
+.brochure-flip-book-inner .stf__canvas {
+  image-rendering: -webkit-optimize-contrast; /* Safari/older Chrome */
+  image-rendering: crisp-edges;               /* Firefox, Chrome 65+, standard */
+}
+
+.brochure-flip-book-controls {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(75, 46, 131, 0.12);
+  border-radius: 16px;
+  padding: 0.85rem 1.5rem;
+  box-shadow: 0 2px 12px rgba(75, 46, 131, 0.08);
+}
+
+.brochure-zoom-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.brochure-btn-zoom {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brochure-btn-zoom:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.brochure-zoom-value {
+  min-width: 3.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #4b2e83;
+  text-align: center;
+}
+
+.brochure-btn-reset {
+  margin-left: 0.25rem;
+  font-size: 0.85rem;
+  padding: 0.4rem 0.8rem;
+}
+
+.brochure-page-controls {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.brochure-btn {
+  padding: 0.55rem 1.35rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #4b2e83;
+  background: #fff;
+  border: 1.5px solid rgba(75, 46, 131, 0.22);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.18s ease, border-color 0.18s ease,
+              color 0.18s ease, box-shadow 0.18s ease;
+  box-shadow: 0 1px 4px rgba(75, 46, 131, 0.08);
+  letter-spacing: 0.01em;
+}
+
+.brochure-btn:hover {
+  background: #f0edf5;
+  border-color: rgba(75, 46, 131, 0.42);
+  color: #3a2166;
+  box-shadow: 0 3px 10px rgba(75, 46, 131, 0.14);
+}
+
+.brochure-btn:active {
+  background: #e8e4ef;
+}
+
+@media (max-width: 768px) {
+  .brochure-flip-book-wrapper {
+    padding: 1.5rem 0.75rem 2rem;
+  }
+
+  .brochure-flip-book-controls {
+    margin-top: 1.5rem;
+    gap: 1rem;
+  }
+
+  .brochure-btn {
+    padding: 0.5rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}

@@ -1,0 +1,154 @@
+.sidebar {
+  width: 260px;
+  height: 100vh;
+  background: #ffffff;
+  border-right: 1px solid #eef1f6;
+  padding: 18px;
+  display: block;
+  overflow: visible;
+}
+
+.sidebar .ps-sidebar-container {
+  background: #ffffff !important;
+  overflow: visible !important;
+}
+
+.sidebar-shell {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Logo */
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+  margin-bottom: 30px;
+}
+
+.logo-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: #5b6bbf;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar-logo h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.sidebar-logo span {
+  font-size: 12px;
+  color: #8a8fa3;
+}
+
+/* Navigation */
+.sidebar-nav {
+  flex: 1;
+}
+
+.sidebar-nav a {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 16px 14px;
+  border-radius: 12px;
+  color: #2d2d2d;
+  font-size: 14px;
+  text-decoration: none;
+  margin-bottom: 6px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.sidebar-nav a:hover {
+  background-color: #f1f4ff;
+  color: #5b6bbf;
+}
+
+.sidebar-nav a.active {
+  background-color: #5b6bbf;
+  color: #ffffff;
+  font-weight: 600;
+}
+.sidebar-nav a span {
+  margin-left: 10px;  /* 👈 extra spacing after icon */
+}
+
+/* CTA Card */
+.sidebar-cta {
+  background: #f6f9ff;
+  border-radius: 14px;
+  padding: 16px;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.cta-icon {
+  font-size: 22px;
+  margin-bottom: 6px;
+}
+
+.cta-title {
+  font-weight: 600;
+  margin: 4px 0;
+}
+
+.cta-sub {
+  font-size: 12px;
+  color: #6b7280;
+  margin-bottom: 10px;
+}
+
+.sidebar-cta button {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background: #5b6bbf;
+  color: #fff;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.sidebar-cta button:hover {
+  background: #4756a6;
+}
+
+/* Logout */
+.logout-btn {
+  background: transparent;
+  border: 1px solid #e5e7eb;
+  margin-top: auto;
+  padding: 12px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  transition: 0.25s;
+  color: #2d2d2d;
+  font-size: 14px;
+  font-weight: 500;
+  width: 100%;
+}
+
+.logout-btn:hover {
+  background: #fee2e2;
+  border-color: #ef4444;
+  color: #dc2626;
+}
+
+.logout-btn svg {
+  font-size: 16px;
+}

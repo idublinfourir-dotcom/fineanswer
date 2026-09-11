@@ -1,0 +1,91 @@
+/* Caption container */
+.partners-caption {
+  text-align: center;
+  margin-bottom: 40px;
+  overflow: hidden;
+}
+
+/* Animated caption */
+.animated-caption {
+  font-size: 30px;
+  font-weight: 700;
+  color: #1f2937;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeSlideUp 1.5s ease-out forwards;
+}
+
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  50% {
+    opacity: 0.6;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animated-caption::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  margin: 10px auto 0;
+  background: linear-gradient(90deg, #4f46e5, #06b6d4);
+  border-radius: 2px;
+  opacity: 0;
+  animation: fadeSlideUp 1.5s ease-out forwards;
+  animation-delay: 0.5s;
+}
+
+.partners-section {
+  padding: 60px 0;
+  background-color: #f9fafb;
+  overflow: hidden;
+}
+
+.logos-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.partner-logo-row {
+  width: 100%;
+  overflow: hidden;
+  user-select: none;
+}
+
+.partner-marquee {
+  overflow: hidden;
+  user-select: none;
+}
+
+/* Spacing between logo cards (react-fast-marquee duplicates content; margin keeps gap consistent) */
+.partner-marquee .logo-card {
+  margin-right: 30px;
+}
+
+/* The Card Style */
+.logo-card {
+  background: white;
+  padding: 20px 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 200px;
+  flex-shrink: 0;
+}
+
+.logo-card img {
+  height: 45px;
+  width: auto;
+  object-fit: contain;
+}

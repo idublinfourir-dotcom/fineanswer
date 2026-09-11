@@ -1,0 +1,8 @@
+.story-detail-wrapper{padding:60px 20px;display:flex;justify-content:center}
+.story-detail-card{max-width:760px;background:#fff;padding:28px;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,0.08);text-align:left}
+.detail-avatar{width:140px;height:140px;border-radius:50%;object-fit:cover;border:6px solid #fff;margin-top:-80px;display:block;margin-left:auto;margin-right:auto}
+.story-detail-card h2{text-align:center;margin-top:12px;color:#111827}
+.meta{color:#6b7280;display:flex;gap:8px;align-items:center;justify-content:center}
+.program{color:#f49927;font-weight:600;text-align:center;margin:10px 0}
+.full-story{margin-top:16px;line-height:1.75;color:#374151}
+.back-link{display:inline-block;margin-top:18px;color:#3469b4}

@@ -1,0 +1,256 @@
+.al-page {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.25rem 4rem;
+  background: #faf9ff;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* ─── Card ───────────────────────────────────────── */
+.al-card {
+  width: 100%;
+  max-width: 720px;
+  background: #fff;
+  border-radius: 24px;
+  border: 1px solid rgba(75, 46, 131, 0.1);
+  box-shadow: 0 8px 40px rgba(75, 46, 131, 0.1), 0 2px 8px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+  text-align: center;
+}
+
+/* ─── Hero ───────────────────────────────────────── */
+.al-hero {
+  background: linear-gradient(135deg, #1a1060 0%, #4b2e83 55%, #7c3aed 100%);
+  padding: 3rem 2rem 2.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.al-hero::before,
+.al-hero::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.12;
+  pointer-events: none;
+}
+.al-hero::before {
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, #818cf8, transparent 65%);
+  top: -120px;
+  right: -80px;
+}
+.al-hero::after {
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, #34d399, transparent 65%);
+  bottom: -80px;
+  left: -60px;
+}
+
+.al-icon-wrap {
+  width: 84px;
+  height: 84px;
+  margin: 0 auto 1.25rem;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  border-radius: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.4rem;
+  color: #fff;
+  position: relative;
+  z-index: 1;
+  backdrop-filter: blur(4px);
+}
+
+.al-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.35rem 1rem;
+  border-radius: 50px;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.al-label-dot {
+  width: 7px;
+  height: 7px;
+  background: #34d399;
+  border-radius: 50%;
+  animation: al-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes al-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.75); }
+}
+
+.al-title {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  position: relative;
+  z-index: 1;
+}
+
+.al-title span {
+  background: linear-gradient(90deg, #6ee7b7, #818cf8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.al-subtitle {
+  margin: 0;
+  font-size: 0.975rem;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Body ───────────────────────────────────────── */
+.al-body {
+  padding: 2.5rem 2.5rem 2rem;
+}
+
+.al-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #fef3c7;
+  color: #92400e;
+  padding: 0.45rem 1.1rem;
+  border-radius: 50px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  border: 1px solid #fde68a;
+  margin-bottom: 1.5rem;
+}
+
+.al-caption {
+  margin: 0 0 0.75rem;
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #1e1b4b;
+  letter-spacing: -0.02em;
+}
+
+.al-desc {
+  margin: 0 auto 2rem;
+  font-size: 0.9rem;
+  color: #6b7280;
+  line-height: 1.65;
+  max-width: 520px;
+}
+
+/* ─── Feature Cards ──────────────────────────────── */
+.al-features {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.85rem;
+  margin-bottom: 1.75rem;
+  text-align: left;
+}
+
+.al-feature {
+  background: #f8f7ff;
+  border: 1px solid rgba(75, 46, 131, 0.1);
+  border-radius: 14px;
+  padding: 1rem 0.85rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.al-feature:hover {
+  border-color: rgba(75, 46, 131, 0.28);
+  box-shadow: 0 4px 14px rgba(75, 46, 131, 0.08);
+}
+
+.al-feature-icon {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.al-feature-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #1e1b4b;
+  margin: 0 0 0.25rem;
+}
+
+.al-feature-text {
+  font-size: 0.72rem;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.45;
+}
+
+/* ─── Platform Badges ────────────────────────────── */
+.al-platforms {
+  display: flex;
+  gap: 0.65rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.al-platform-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: #fff;
+  color: #4b2e83;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.4rem 1rem;
+  border-radius: 10px;
+  border: 1.5px solid rgba(75, 46, 131, 0.2);
+  box-shadow: 0 1px 4px rgba(75, 46, 131, 0.07);
+}
+
+/* ─── Footer ─────────────────────────────────────── */
+.al-footer {
+  background: #f8f7ff;
+  border-top: 1px solid rgba(75, 46, 131, 0.08);
+  padding: 1.25rem 2rem;
+  font-size: 0.8rem;
+  color: #9ca3af;
+  letter-spacing: 0.01em;
+}
+
+.al-footer strong {
+  color: #4b2e83;
+}
+
+/* ─── Responsive ─────────────────────────────────── */
+@media (max-width: 600px) {
+  .al-features {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .al-body {
+    padding: 2rem 1.25rem 1.5rem;
+  }
+
+  .al-hero {
+    padding: 2.25rem 1.25rem 2rem;
+  }
+}

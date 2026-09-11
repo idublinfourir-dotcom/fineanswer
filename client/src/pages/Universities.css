@@ -1,0 +1,70 @@
+.universities-page {
+  padding: 24px;
+}
+
+.university-card {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.university-card img {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  object-fit: cover;
+  margin-right: 16px;
+}
+
+.card-content {
+  flex: 1;
+}
+
+.card-content h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.card-content p {
+  margin: 4px 0;
+  color: #666;
+}
+
+.meta {
+  font-size: 13px;
+  color: #888;
+  display: flex;
+  gap: 12px;
+}
+
+.card-status {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.badge {
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  text-align: center;
+}
+
+.submitted {
+  background: #e0e7ff;
+  color: #4338ca;
+}
+
+.success {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.urgent {
+  background: #fee2e2;
+  color: #b91c1c;
+}

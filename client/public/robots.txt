@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+
+# Block private/admin areas from indexing
+Disallow: /dashboard
+Disallow: /admin
+Disallow: /login
+Disallow: /register
+Disallow: /forgot-password
+Disallow: /reset-password
+Disallow: /payment
+Disallow: /payment/success
+Disallow: /payment/fail
+Disallow: /payment/cancel
+
+Sitemap: https://www.fineanswer.net/sitemap.xml

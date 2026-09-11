@@ -1,0 +1,191 @@
+.ireland-page {
+  font-family: "Poppins", sans-serif;
+  color: #222;
+}
+
+.hero-section {
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.overlay {
+  position: relative;
+  background: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Back link: top-left of hero, breadcrumb-style */
+.hero-back-link {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 8px 14px;
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: background 0.2s ease, color 0.2s ease;
+  z-index: 2;
+}
+
+.hero-back-link:hover {
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+}
+
+.hero-content {
+  text-align: center;
+  color: white;
+  max-width: 700px;
+  padding: 20px;
+  animation: fadeIn 1.2s ease-in;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #fff;
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.9),
+    0 2px 8px rgba(0, 0, 0, 0.8),
+    0 4px 16px rgba(0, 0, 0, 0.6),
+    0 0 32px rgba(0, 0, 0, 0.5);
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+.hero-btn {
+  background: #0077c0;
+  color: white;
+  padding: 12px 30px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.hero-btn:hover {
+  background: #005b91;
+}
+
+.key-points {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.key-points h2 {
+  color: #004aad;
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+.key-points ul {
+  list-style: none;
+  padding: 0;
+}
+
+.key-points li {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* KEY POINTS */
+.keypoints {
+  padding: 60px 10%;
+  text-align: center;
+  background: #f9f9f9;
+}
+
+.keypoints h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #004aad;
+}
+
+.points-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.point {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px 25px;
+  min-width: 180px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+.apply-btn {
+  background: #004aad;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.apply-btn:hover {
+  background: #003a8c;
+}
+
+/* STUDY DETAILS */
+.study-details {
+  padding: 60px 10%;
+  line-height: 1.7;
+}
+
+.study-details h2 {
+  font-size: 2rem;
+  color: #004aad;
+  margin-bottom: 15px;
+}
+
+.study-details h3 {
+  font-size: 1.3rem;
+  color: #222;
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+
+.study-details ul {
+  padding-left: 20px;
+  list-style: disc;
+}
+
+.study-details li {
+  margin-bottom: 8px;
+}

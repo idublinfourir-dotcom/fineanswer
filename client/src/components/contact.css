@@ -1,0 +1,272 @@
+/* WRAPPER */
+.contact-wrapper {
+  width: 100%;
+  padding: 60px 0;
+  background: #f9fafb;
+  display: flex;
+  justify-content: center;
+}
+
+.contact-container {
+  width: 90%;
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+}
+
+/* LEFT SIDE */
+.contact-left {
+  padding-right: 20px;
+}
+
+.contact-tag {
+  color: #13253F;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.contact-title {
+  font-size: 38px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 10px 0 15px;
+}
+
+.contact-desc {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+.contact-info p {
+  margin-bottom: 8px;
+  color: #666;
+}
+
+.contact-phone-row {
+  margin-bottom: 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  color: #666;
+}
+
+.contact-phone-icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: #0369a1;
+  font-size: 1rem;
+}
+
+.contact-whatsapp-row {
+  margin-bottom: 12px;
+}
+
+.contact-whatsapp-link {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 6px 0;
+  color: #333;
+  text-decoration: none;
+  transition: color 0.2s, opacity 0.2s;
+}
+
+.contact-whatsapp-link:hover {
+  color: #25d366;
+  opacity: 0.9;
+}
+
+.contact-whatsapp-icon {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  color: #25d366;
+  font-size: 1rem;
+}
+
+.contact-whatsapp-text {
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.contact-whatsapp-text strong {
+  display: block;
+  margin-bottom: 2px;
+  color: inherit;
+}
+
+.social-icons {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.social-icons span {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: white;
+  transition: 0.3s;
+}
+
+.social-icons span:hover {
+  background: #FFDA32;
+  color: white;
+  border-color: #FFDA32;
+}
+
+/* RIGHT FORM CARD */
+.contact-card {
+  background: white;
+  padding: 30px 35px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  border: 1px solid #eee;
+}
+
+.form-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+
+/* FORM */
+.contact-form .form-group {
+  margin-bottom: 18px;
+}
+
+.contact-form label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: #555;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 15px;
+  outline: none;
+  transition: 0.3s ease-in-out;
+  background: #fafafa;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #FFDA32;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.2);
+}
+
+/* SEND BUTTON */
+.send-btn {
+  width: 100%;
+  background: #FFDA32;
+  color: white;
+  padding: 13px;
+  border: none;
+  border-radius: 10px;
+  font-size: 17px;
+  cursor: pointer;
+  margin-top: 5px;
+  transition: 0.3s;
+}
+.contact-form select,
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-family: inherit;
+}
+
+.contact-form select {
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.send-btn {
+  margin-top: 10px;
+}
+
+.send-btn:hover {
+  background: #FFDA32;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .contact-wrapper {
+    padding: 50px 0;
+  }
+
+  .contact-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .contact-left {
+    padding-right: 0;
+  }
+
+  .contact-title {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 576px) {
+  .contact-wrapper {
+    padding: 40px 16px;
+  }
+
+  .contact-container {
+    width: 100%;
+    gap: 32px;
+  }
+
+  .contact-title {
+    font-size: 1.75rem;
+  }
+
+  .contact-desc {
+    font-size: 15px;
+  }
+
+  .contact-info p {
+    font-size: 14px;
+  }
+
+  .contact-card {
+    padding: 24px 20px;
+  }
+
+  .form-title {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    padding: 11px 14px;
+  }
+
+  .send-btn {
+    padding: 12px;
+    font-size: 16px;
+  }
+}
