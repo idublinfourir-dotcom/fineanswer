@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { FaArrowRight, FaCalendar, FaNewspaper, FaUser } from "react-icons/fa";
 import { API_BASE_URL } from "../config/api";
 import "./BlogSection.css";
+import PdfPages from "./PdfPages";
 
 export default function BlogSection() {
   const [blogs, setBlogs] = useState([]);
@@ -80,6 +81,13 @@ export default function BlogSection() {
               <div className="blog-image-wrapper">
                 {blog.image ? (
                   <img src={blog.image} alt={blog.title} className="blog-image" />
+                ) : blog.pdf ? (
+                  <PdfPages
+                    url={blog.pdf}
+                    maxPages={1}
+                    alt={blog.title}
+                    className="blog-image pdf-thumb"
+                  />
                 ) : (
                   <div className="blog-image-placeholder">
                     <FaNewspaper />

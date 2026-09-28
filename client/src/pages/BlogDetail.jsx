@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { API_BASE_URL } from "../config/api";
 import "../styles/blogdetails.css";
+import PdfPages from "../components/PdfPages";
 
 const renderRichContent = (content) => {
   if (!content) {
@@ -157,6 +158,11 @@ export default function BlogDetail() {
             className="blog-detail-body"
             dangerouslySetInnerHTML={renderRichContent(blog.content)}
           />
+          {blog.pdf && (
+            <div className="blog-detail-pdf-pages">
+              <PdfPages url={blog.pdf} alt={blog.title} />
+            </div>
+          )}
           {blog.pdf && (
             <a
               href={blog.pdf}

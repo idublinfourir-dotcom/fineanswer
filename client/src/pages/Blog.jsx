@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { API_BASE_URL } from "../config/api";
 import "../styles/Blog.css";
+import PdfPages from "../components/PdfPages";
 
 export default function Blog() {
   const [blogs, setBlogs] = useState([]);
@@ -106,6 +107,13 @@ export default function Blog() {
                       src={blog.image}
                       alt={blog.title}
                       loading="lazy"
+                    />
+                  ) : blog.pdf ? (
+                    <PdfPages
+                      url={blog.pdf}
+                      maxPages={1}
+                      alt={blog.title}
+                      className="pdf-thumb"
                     />
                   ) : (
                     <div className="blog-placeholder" />

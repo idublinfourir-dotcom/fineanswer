@@ -310,3 +310,7 @@
     justify-content: center;
   }
 }
+
+.blog-image.pdf-thumb {
+  object-position: top;
+}

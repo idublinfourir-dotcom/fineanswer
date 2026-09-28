@@ -416,3 +416,6 @@
     transition-duration: 0.01ms !important;
   }
 }
+.blog-card-image img.pdf-thumb {
+  object-position: top;
+}
