@@ -59,15 +59,15 @@ const connectDB = async () => {
   await connectWithRetry();
 
   const db = client.db("FineAnswer");
-  collections.users              = db.collection("usersCollection");
-  collections.successStory       = db.collection("successStory");
-  collections.blog               = db.collection("blog");
-  collections.session            = db.collection("session");
-  collections.events             = db.collection("events");
-  collections.career             = db.collection("careerCollection");
+  collections.users = db.collection("usersCollection");
+  collections.successStory = db.collection("successStory");
+  collections.blog = db.collection("blog");
+  collections.session = db.collection("session");
+  collections.events = db.collection("events");
+  collections.career = db.collection("careerCollection");
   collections.careerApplications = db.collection("careerApplications");
-  collections.documents          = db.collection("documentsCollection");
-  collections.payment            = db.collection("paymentCollection");
+  collections.documents = db.collection("documentsCollection");
+  collections.payment = db.collection("paymentCollection");
 };
 
 module.exports = { client, collections, connectDB };

@@ -157,6 +157,16 @@ export default function BlogDetail() {
             className="blog-detail-body"
             dangerouslySetInnerHTML={renderRichContent(blog.content)}
           />
+          {blog.pdf && (
+            <a
+              href={blog.pdf}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="blog-detail-pdf"
+            >
+              📄 View / Download PDF
+            </a>
+          )}
         </div>
 
         {/* Footer Section */}

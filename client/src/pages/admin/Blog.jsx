@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import {
     FaEdit,
     FaFileAlt,
+    FaFilePdf,
     FaImage,
     FaPlus,
     FaSpinner,
@@ -10,7 +11,7 @@ import {
     FaUser,
 } from "react-icons/fa";
 import { API_BASE_URL } from "../../config/api";
-import { uploadImageToCloudinary } from "../../utils/cloudinary";
+import { uploadDocumentToCloudinary, uploadImageToCloudinary } from "../../utils/cloudinary";
 import "./Blog.css";
 
 export default function Blog() {
@@ -25,10 +26,12 @@ export default function Blog() {
     title: "",
     content: "",
     image: "",
+    pdf: "",
     author: "",
   });
   const [imageFile, setImageFile] = useState(null);
   const [imagePreview, setImagePreview] = useState("");
+  const [pdfFile, setPdfFile] = useState(null);
   const [uploading, setUploading] = useState(false);
   const [uploadStatus, setUploadStatus] = useState(null);
   const [submitting, setSubmitting] = useState(false);
@@ -62,6 +65,7 @@ export default function Blog() {
         title: blog.title,
         content: blog.content,
         image: blog.image || "",
+        pdf: blog.pdf || "",
         author: blog.author || "",
       });
       setImagePreview(blog.image || "");
@@ -71,11 +75,13 @@ export default function Blog() {
         title: "",
         content: "",
         image: "",
+        pdf: "",
         author: "",
       });
       setImagePreview("");
     }
     setImageFile(null);
+    setPdfFile(null);
     setUploadStatus(null);
     setShowForm(true);
   };
@@ -87,10 +93,12 @@ export default function Blog() {
       title: "",
       content: "",
       image: "",
+      pdf: "",
       author: "",
     });
     setImageFile(null);
     setImagePreview("");
+    setPdfFile(null);
     setUploadStatus(null);
   };
 
@@ -154,6 +162,27 @@ export default function Blog() {
     setUploadStatus(null);
   };
 
+  const handlePdfSelect = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    if (file.type !== "application/pdf") {
+      setUploadStatus({ type: "error", message: "Only PDF files are allowed" });
+      return;
+    }
+    if (file.size > 10 * 1024 * 1024) {
+      setUploadStatus({ type: "error", message: "PDF must be less than 10MB" });
+      return;
+    }
+    setPdfFile(file);
+    setUploadStatus(null);
+  };
+
+  const handleRemovePdf = () => {
+    setPdfFile(null);
+    setFormData((prev) => ({ ...prev, pdf: "" }));
+    setUploadStatus(null);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitting(true);
@@ -174,10 +203,25 @@ export default function Blog() {
         }
       }
 
+      let pdfUrl = formData.pdf;
+
+      if (pdfFile) {
+        setUploadStatus({ type: "uploading", message: "Uploading PDF..." });
+        try {
+          pdfUrl = await uploadDocumentToCloudinary(pdfFile);
+          setUploadStatus({ type: "success", message: "PDF uploaded successfully!" });
+        } catch (uploadError) {
+          setUploadStatus({ type: "error", message: uploadError.message });
+          setSubmitting(false);
+          return;
+        }
+      }
+
       const blogData = {
         title: formData.title,
         content: formData.content,
         image: imageUrl,
+        pdf: pdfUrl,
         author: formData.author,
       };
 
@@ -405,6 +449,43 @@ export default function Blog() {
                   {uploadStatus && (
                     <div className={`upload-status ${uploadStatus.type}`}>
                       {uploadStatus.message}
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <div className="form-group">
+                <label>PDF Attachment</label>
+                <div className="image-upload-section">
+                  {!pdfFile && !formData.pdf && (
+                    <label className="image-upload-btn">
+                      <FaFilePdf />
+                      <span>Choose PDF</span>
+                      <input
+                        type="file"
+                        accept="application/pdf"
+                        onChange={handlePdfSelect}
+                      />
+                    </label>
+                  )}
+
+                  {(pdfFile || formData.pdf) && (
+                    <div className="pdf-preview">
+                      <FaFilePdf />
+                      {pdfFile ? (
+                        <span>{pdfFile.name}</span>
+                      ) : (
+                        <a href={formData.pdf} target="_blank" rel="noopener noreferrer">
+                          Current PDF
+                        </a>
+                      )}
+                      <button
+                        type="button"
+                        className="remove-image-btn"
+                        onClick={handleRemovePdf}
+                      >
+                        <FaTimes />
+                      </button>
                     </div>
                   )}
                 </div>

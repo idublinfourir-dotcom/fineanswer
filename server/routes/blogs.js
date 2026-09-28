@@ -47,7 +47,7 @@ router.post(
   authenticateToken,
   requireAdmin,
   asyncHandler(async (req, res) => {
-    const { title, content, image, author } = req.body;
+    const { title, content, image, pdf, author } = req.body;
     if (!title || !content) {
       return res
         .status(400)
@@ -57,6 +57,7 @@ router.post(
       title: title.trim(),
       content: content.trim(),
       image: image || null,
+      pdf: pdf || null,
       author: author || req.user.name || "Admin",
       authorId: req.user._id,
       createdAt: new Date(),
@@ -86,11 +87,12 @@ router.put(
         .status(400)
         .json({ success: false, message: "Invalid blog ID format" });
     }
-    const { title, content, image, author } = req.body;
+    const { title, content, image, pdf, author } = req.body;
     const updateFields = { updatedAt: new Date() };
     if (title) updateFields.title = title.trim();
     if (content) updateFields.content = content.trim();
     if (image !== undefined) updateFields.image = image;
+    if (pdf !== undefined) updateFields.pdf = pdf;
     if (author) updateFields.author = author.trim();
     const updatedBlog = await collections.blog.findOneAndUpdate(
       { _id: new ObjectId(id) },

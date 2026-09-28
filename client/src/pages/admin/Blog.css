@@ -452,3 +452,20 @@
     flex-direction: column;
   }
 }
+
+.pdf-preview {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 3rem 1rem 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  color: #4a5568;
+  word-break: break-all;
+}
+
+.pdf-preview > svg {
+  color: #e53e3e;
+  flex-shrink: 0;
+}
