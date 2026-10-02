@@ -11,6 +11,7 @@
 /* Main Content BG Card */
 .main-bg-card {
   flex: 1;
+  min-width: 0; /* let the card shrink to the screen instead of growing to its content */
   background: #ffffff;
   border-radius: 16px;
   padding: 24px;
@@ -257,6 +258,27 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
+  }
+
+  .card-left-content,
+  .card-text-details {
+    align-items: flex-start;
+    min-width: 0;
+  }
+
+  /* Badges drop below the title instead of pushing the card off-screen */
+  .card-title-row {
+    flex-wrap: wrap;
+    gap: 6px 8px;
+  }
+
+  .card-title-row h4 {
+    flex-basis: 100%;
+  }
+
+  .card-alert-banner span {
+    min-width: 0;
+    overflow-wrap: anywhere;
   }
 
   .action-button-group {

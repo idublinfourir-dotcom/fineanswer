@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { FaArrowLeft, FaMapMarkerAlt, FaBriefcase, FaCalendarAlt } from "react-icons/fa";
 import { API_BASE_URL } from "../config/api";
-import { AuthContext } from "./Provider/ContextProvider";
+import { AuthContext } from "./Provider/AuthContext";
 import "./admin/Career.css";
 
 export default function JobDetail() {
@@ -18,26 +18,28 @@ export default function JobDetail() {
   const [formData, setFormData] = useState({ documents: "", notes: "" });
 
   useEffect(() => {
-    if (id) fetchJob();
-  }, [id]);
+    if (!id) return;
 
-  const fetchJob = async () => {
-    try {
-      setLoading(true);
-      setError(null);
-      const res = await fetch(`${API_BASE_URL}/jobs/${id}`);
-      const data = await res.json();
-      if (data.success) {
-        setJob(data.data);
-      } else {
-        setError(data.message || "Job not found");
+    const fetchJob = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        const res = await fetch(`${API_BASE_URL}/jobs/${id}`);
+        const data = await res.json();
+        if (data.success) {
+          setJob(data.data);
+        } else {
+          setError(data.message || "Job not found");
+        }
+      } catch {
+        setError("Failed to load job details");
+      } finally {
+        setLoading(false);
       }
-    } catch (err) {
-      setError("Failed to load job details");
-    } finally {
-      setLoading(false);
-    }
-  };
+    };
+
+    fetchJob();
+  }, [id]);
 
   const formatDate = (value) => {
     if (!value) return "Open until filled";
@@ -78,7 +80,7 @@ export default function JobDetail() {
       } else {
         setApplyError(data.message || "Application failed.");
       }
-    } catch (_err) {
+    } catch {
       setApplyError("Something went wrong. Please try again.");
     } finally {
       setApplying(false);

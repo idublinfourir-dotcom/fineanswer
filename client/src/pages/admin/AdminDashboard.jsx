@@ -1,6 +1,6 @@
 import { useContext, useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../Provider/ContextProvider";
+import { AuthContext } from "../Provider/AuthContext";
 import { API_BASE_URL } from "../../config/api";
 import "./AdminDashboard.css";
 
@@ -13,17 +13,9 @@ export default function AdminDashboard() {
   const [blogsCount, setBlogsCount] = useState(0);
   const [storiesCount, setStoriesCount] = useState(0);
 
-  // If somehow a non-admin gets here, show warning
-  if (!isAdmin) {
-    return (
-      <div style={{ padding: "2rem", textAlign: "center" }}>
-        <h2 style={{ color: "#dc2626" }}>Access Denied</h2>
-        <p>You don't have admin privileges. Redirecting...</p>
-      </div>
-    );
-  }
-
   useEffect(() => {
+    if (!isAdmin) return;
+
     const fetchOverview = async () => {
       try {
         setLoading(true);
@@ -81,7 +73,7 @@ export default function AdminDashboard() {
     };
 
     fetchOverview();
-  }, []);
+  }, [isAdmin]);
 
   const overview = useMemo(() => {
     const totalStudents = students.length;
@@ -105,6 +97,16 @@ export default function AdminDashboard() {
       recentStudents,
     };
   }, [students, documents]);
+
+  // If somehow a non-admin gets here, show warning (after the hooks, which must always run)
+  if (!isAdmin) {
+    return (
+      <div style={{ padding: "2rem", textAlign: "center" }}>
+        <h2 style={{ color: "#dc2626" }}>Access Denied</h2>
+        <p>You don't have admin privileges. Redirecting...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="admin-dashboard">

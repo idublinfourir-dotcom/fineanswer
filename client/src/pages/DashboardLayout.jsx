@@ -43,11 +43,7 @@ export default function DashboardLayout() {
       />
 
       <div className="dashboard-main">
-        <Topbar
-          sidebarCollapsed={sidebarCollapsed}
-          onToggleSidebar={toggleCollapsed}
-          onToggleMobileSidebar={toggleMobile}
-        />
+        <Topbar onToggleMobileSidebar={toggleMobile} />
         <Outlet />
       </div>
     </div>

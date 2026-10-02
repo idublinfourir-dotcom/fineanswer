@@ -36,7 +36,7 @@ const countries = [
       <div className="countries-grid">
         {countries.map((c, i) => (
           <div className="country-card" key={i}>
-            <img src={c.img} alt={c.name} />
+            <img src={c.img} alt={c.name} loading="lazy" />
             <div className="card-content">
               <h3>{c.name}</h3>
               <p>{c.desc}</p>

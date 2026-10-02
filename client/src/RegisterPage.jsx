@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { API_BASE_URL } from "./config/api";
-import { AuthContext } from "./pages/Provider/ContextProvider";
+import { AuthContext } from "./pages/Provider/AuthContext";
 import "./RegisterPage.css";
 
 export default function RegisterPage() {
@@ -75,7 +75,7 @@ export default function RegisterPage() {
         <div className="register-left">
           <div className="register-form">
             <h2>Create an Account</h2>
-            <p className="subtext">Let’s get started with your 30-day free trial.</p>
+            <p className="subtext">Track your applications, documents and visa progress in one place.</p>
             
             <form onSubmit={handleSubmit} autoComplete="off">
               <div className="input-group">

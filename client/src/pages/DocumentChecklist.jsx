@@ -86,7 +86,7 @@ export default function DocumentChecklist() {
         window.open(blobUrl, "_blank", "noopener,noreferrer");
       }
       setTimeout(() => URL.revokeObjectURL(blobUrl), 5000);
-    } catch (_err) {
+    } catch {
       // Fallback: open Cloudinary URL directly
       if (action === "download") {
         const a = document.createElement("a");
@@ -116,12 +116,13 @@ export default function DocumentChecklist() {
         },
       });
       const data = await res.json();
-      if (data.success && data.data) {
+      if (!res.ok || !data.success) throw new Error(data.message);
+      if (data.data) {
         setDocuments(data.data);
       }
       setError(null);
-    } catch (_err) {
-      setError("Failed to load documents");
+    } catch {
+      setError("We couldn't load your documents. Please refresh the page to try again.");
     } finally {
       setLoading(false);
     }
@@ -207,6 +208,13 @@ export default function DocumentChecklist() {
           <h3>Standardized Tests & Documents</h3>
         </div>
 
+        {error && (
+          <div className="card-alert-banner banner-pending" role="alert">
+            <FaExclamationCircle className="alert-mini-icon" />
+            <span>{error}</span>
+          </div>
+        )}
+
         <div className="doc-card-list">
           {documentFields.map((field) => {
             const status = getDocStatus(field.key);
@@ -250,6 +258,8 @@ export default function DocumentChecklist() {
                           onClick={() =>
                             openPdf(documents[field.key], "view", field.key)
                           }
+                          disabled={loadingPdf === field.key}
+                          aria-busy={loadingPdf === field.key}
                           title="View Document"
                         >
                           <FaEye />
@@ -289,10 +299,8 @@ export default function DocumentChecklist() {
                   <FaExclamationCircle className="alert-mini-icon" />
                   <span>
                     {hasFile
-                      ? `Uploaded on ${documents.updatedAt || new Date().toLocaleDateString()}`
-                      : field.key === "englishProficiency"
-                        ? "Test scheduled for Jan 25, 2026"
-                        : "Please upload the latest PDF version."}
+                      ? `Uploaded on ${new Date(documents.updatedAt || Date.now()).toLocaleDateString()}`
+                      : "Please upload the latest PDF version."}
                   </span>
                 </div>
               </div>

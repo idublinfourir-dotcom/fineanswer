@@ -1,14 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./australia.css";
+import "./countryPage.css";
 import australiaBg from "./images/aus.jpg";
-import Navbar from "./components/navbar2"; // import your navbar component
+import Navbar3 from "./components/navbar3";
 
 export default function AustraliaPage() {
   return (
     <div className="australia-page">
       {/* Navbar */}
-      <Navbar />
+      <Navbar3 />
 
       {/* Hero Section */}
       <section
@@ -33,7 +33,7 @@ export default function AustraliaPage() {
       </section>
 
     {/* KEY POINTS SECTION */}
-      <section className="keypoints">
+      <section className="keypoints" id="keypoints">
         <h2>Key Points</h2>
         <div className="points-grid">
           <div className="point"><strong>IELTS:</strong> 6.0 - 6.5</div>

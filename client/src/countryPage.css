@@ -1,5 +1,7 @@
+/* Shared by the Australia, UK and Ireland pages */
+.australia-page,
+.uk-page,
 .ireland-page {
-  font-family: "Poppins", sans-serif;
   color: #222;
 }
 
@@ -22,7 +24,7 @@
 /* Back link: top-left of hero, breadcrumb-style */
 .hero-back-link {
   position: absolute;
-  top: 24px;
+  top: 116px; /* below the fixed navbar */
   left: 24px;
   display: inline-flex;
   align-items: center;
@@ -119,6 +121,7 @@
 }
 /* KEY POINTS */
 .keypoints {
+  scroll-margin-top: 110px; /* keep "Learn More" target clear of the fixed navbar */
   padding: 60px 10%;
   text-align: center;
   background: #f9f9f9;

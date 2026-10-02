@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { FaCamera, FaGraduationCap, FaSave, FaUser } from "react-icons/fa";
 import { API_BASE_URL } from "../config/api";
 import "./Profile.css";
-import { AuthContext } from "./Provider/ContextProvider";
+import { AuthContext } from "./Provider/AuthContext";
 
 export default function Profile() {
   const { user, getCurrentUser } = useContext(AuthContext);

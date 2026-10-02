@@ -41,30 +41,30 @@ export default function BlogDetail() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    if (id) {
-      fetchBlog();
-    }
-  }, [id]);
+    if (!id) return;
 
-  const fetchBlog = async () => {
-    try {
-      setLoading(true);
-      setError(null);
-      const response = await fetch(`${API_BASE_URL}/blogs/${id}`);
-      const data = await response.json();
+    const fetchBlog = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        const response = await fetch(`${API_BASE_URL}/blogs/${id}`);
+        const data = await response.json();
 
-      if (data.success) {
-        setBlog(data.data);
-      } else {
-        setError(data.message || "Blog not found");
+        if (data.success) {
+          setBlog(data.data);
+        } else {
+          setError(data.message || "Blog not found");
+        }
+      } catch (err) {
+        console.error("Error fetching blog:", err);
+        setError("Failed to load blog article");
+      } finally {
+        setLoading(false);
       }
-    } catch (err) {
-      console.error("Error fetching blog:", err);
-      setError("Failed to load blog article");
-    } finally {
-      setLoading(false);
-    }
-  };
+    };
+
+    fetchBlog();
+  }, [id]);
 
   const formatDate = (dateString) => {
     if (!dateString) return "";

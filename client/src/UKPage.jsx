@@ -1,14 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./UKPage.css"; // You can copy australia.css into uk.css if identical
+import "./countryPage.css";
 import ukBg from "./images/uk.jpg"; // Make sure the image exists in src/images
-import Navbar from "./components/navbar2"; // your navbar component
+import Navbar3 from "./components/navbar3";
 
 export default function UKPage() {
   return (
     <div className="uk-page">
       {/* Navbar */}
-      <Navbar />
+      <Navbar3 />
 
       {/* Hero Section */}
       <section

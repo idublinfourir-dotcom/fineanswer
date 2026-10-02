@@ -8,7 +8,7 @@ import { getSuccessStories } from "../services/successStoriesApi";
 export default function SuccessStories() {
   const [stories, setStories] = useState([]);
   const [active, setActive] = useState(0);
-  const autoRef = useRef(null);
+  const touchStart = useRef(null);
 
   useEffect(() => {
     const fetch = async () => {
@@ -19,21 +19,38 @@ export default function SuccessStories() {
     fetch();
   }, []);
 
+  // Autoplay; restarts whenever the active story changes so manual navigation gets a full 5s
   useEffect(() => {
-    if (stories.length > 0) {
-      autoRef.current = setInterval(() => next(), 5000);
-    }
-    return () => clearInterval(autoRef.current);
-  }, [stories, active]);
+    if (!stories.length) return;
+    const id = setInterval(() => {
+      setActive((p) => (p === stories.length - 1 ? 0 : p + 1));
+    }, 5000);
+    return () => clearInterval(id);
+  }, [stories.length, active]);
 
   const prev = () => {
-    clearInterval(autoRef.current);
     setActive((p) => (p === 0 ? stories.length - 1 : p - 1));
   };
 
   const next = () => {
-    clearInterval(autoRef.current);
     setActive((p) => (p === stories.length - 1 ? 0 : p + 1));
+  };
+
+  // Swipe left/right on touch screens
+  const handleTouchStart = (e) => {
+    const t = e.touches[0];
+    touchStart.current = { x: t.clientX, y: t.clientY };
+  };
+
+  const handleTouchEnd = (e) => {
+    if (!touchStart.current) return;
+    const t = e.changedTouches[0];
+    const dx = t.clientX - touchStart.current.x;
+    const dy = t.clientY - touchStart.current.y;
+    touchStart.current = null;
+    if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy)) return; // a tap or a vertical scroll
+    if (dx < 0) next();
+    else prev();
   };
 
   if (!stories.length) return null;
@@ -64,7 +81,11 @@ export default function SuccessStories() {
   <FiArrowRight />
 </button>
 
-        <div className="carousel-track">
+        <div
+          className="carousel-track"
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
           {stories.map((story, i) => {
             let offset = i - active;
             if (offset < -stories.length / 2) offset += stories.length;

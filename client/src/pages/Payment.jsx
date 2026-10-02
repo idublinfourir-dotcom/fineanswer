@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { API_BASE_URL } from "../config/api";
-import { AuthContext } from "./Provider/ContextProvider";
+import { AuthContext } from "./Provider/AuthContext";
 import "./Payment.css";
 
 export default function Payment() {
@@ -93,8 +93,8 @@ export default function Payment() {
         <section className="payment-card">
           <h1 className="payment-title">Secure Payment</h1>
           <p className="payment-subtitle">
-            We will integrate SSLCommerz here to securely process your
-            application fees and service payments.
+            Pay your application fees and service charges securely through
+            SSLCommerz.
           </p>
           <div className="payment-placeholder-box">
             <p>Select what you want to pay for:</p>

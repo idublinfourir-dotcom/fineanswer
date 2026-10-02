@@ -19,6 +19,16 @@ import "./Analytics.css";
 
 const COLORS = ["#38bdf8", "#0284c7", "#0369a1", "#0ea5e9", "#7dd3fc", "#bae6fd"];
 
+// Legend text "Name: 42%" for a pie (labels drawn outside the pie get clipped on phones)
+const pieLegendLabel = (data) => {
+  const total = data.reduce((sum, d) => sum + d.value, 0);
+  return (name) => {
+    const item = data.find((d) => d.name === name);
+    const pct = total && item ? Math.round((item.value / total) * 100) : 0;
+    return `${name}: ${pct}%`;
+  };
+};
+
 export default function Analytics() {
   const [students, setStudents] = useState([]);
   const [documents, setDocuments] = useState([]);
@@ -246,10 +256,6 @@ export default function Analytics() {
                 data={stats.countryData}
                 cx="50%"
                 cy="50%"
-                labelLine={false}
-                label={({ name, percent }) =>
-                  `${name}: ${(percent * 100).toFixed(0)}%`
-                }
                 outerRadius={80}
                 fill="#8884d8"
                 dataKey="value"
@@ -262,6 +268,7 @@ export default function Analytics() {
                 ))}
               </Pie>
               <Tooltip />
+              <Legend formatter={pieLegendLabel(stats.countryData)} />
             </PieChart>
           </ResponsiveContainer>
         </div>
@@ -272,7 +279,7 @@ export default function Analytics() {
           <ResponsiveContainer width="100%" height={300}>
             <BarChart data={stats.docStatusData}>
               <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="name" />
+              <XAxis dataKey="name" interval={0} tick={{ fontSize: 12 }} />
               <YAxis />
               <Tooltip />
               <Bar dataKey="value" fill="#0284c7" />
@@ -289,10 +296,6 @@ export default function Analytics() {
                 data={stats.authData}
                 cx="50%"
                 cy="50%"
-                labelLine={false}
-                label={({ name, percent }) =>
-                  `${name}: ${(percent * 100).toFixed(0)}%`
-                }
                 outerRadius={80}
                 fill="#8884d8"
                 dataKey="value"
@@ -305,6 +308,7 @@ export default function Analytics() {
                 ))}
               </Pie>
               <Tooltip />
+              <Legend formatter={pieLegendLabel(stats.authData)} />
             </PieChart>
           </ResponsiveContainer>
         </div>
@@ -315,7 +319,7 @@ export default function Analytics() {
           <ResponsiveContainer width="100%" height={300}>
             <BarChart data={stats.progressData}>
               <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="name" />
+              <XAxis dataKey="name" interval={0} tick={{ fontSize: 12 }} />
               <YAxis />
               <Tooltip />
               <Bar dataKey="value" fill="#0369a1" />

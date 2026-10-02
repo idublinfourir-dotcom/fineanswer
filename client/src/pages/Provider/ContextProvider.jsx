@@ -9,12 +9,12 @@ import {
 } from "firebase/auth";
 
 
-import { createContext, useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import { API_BASE_URL } from "../../config/api";
 import auth from "../../Firebase/firebase.config";
+import { AuthContext } from "./AuthContext";
 
-export const AuthContext = createContext(null);
 const googleProvider = new GoogleAuthProvider();
 const ContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);

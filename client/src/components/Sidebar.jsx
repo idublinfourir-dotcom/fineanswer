@@ -15,7 +15,7 @@ import {
   FaChevronLeft,
   FaChevronRight,
 } from "react-icons/fa";
-import { AuthContext } from "../pages/Provider/ContextProvider";
+import { AuthContext } from "../pages/Provider/AuthContext";
 import logo from "../assets/logo.png";
 import "./Sidebar.css";
 

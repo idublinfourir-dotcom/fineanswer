@@ -45,7 +45,7 @@ export default function AdminCareer() {
       } else {
         setError("Failed to load jobs");
       }
-    } catch (_err) {
+    } catch {
       setError("Failed to load jobs");
     } finally {
       setLoading(false);
@@ -119,7 +119,7 @@ export default function AdminCareer() {
       } else {
         alert(data.message || "Failed to save job");
       }
-    } catch (_err) {
+    } catch {
       alert("An error occurred while saving the job");
     } finally {
       setSubmitting(false);
@@ -143,7 +143,7 @@ export default function AdminCareer() {
       } else {
         alert(data.message || "Failed to delete job");
       }
-    } catch (_err) {
+    } catch {
       alert("An error occurred while deleting the job");
     }
   };
@@ -173,7 +173,7 @@ export default function AdminCareer() {
       } else {
         alert(data.message || "Failed to load applicants");
       }
-    } catch (_err) {
+    } catch {
       alert("An error occurred while loading applicants");
     }
   };

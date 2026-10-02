@@ -1,12 +1,8 @@
 import { useContext } from "react";
 import { FaBars, FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import { AuthContext } from "../pages/Provider/ContextProvider";
+import { AuthContext } from "../pages/Provider/AuthContext";
 
-export default function Topbar({
-  sidebarCollapsed = false,
-  onToggleSidebar,
-  onToggleMobileSidebar,
-}) {
+export default function Topbar({ onToggleMobileSidebar }) {
   const { user } = useContext(AuthContext);
 
   const initials = (() => {

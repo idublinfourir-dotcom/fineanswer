@@ -32,8 +32,8 @@ export default function Blog() {
   const [imageFile, setImageFile] = useState(null);
   const [imagePreview, setImagePreview] = useState("");
   const [pdfFile, setPdfFile] = useState(null);
-  const [uploading, setUploading] = useState(false);
   const [uploadStatus, setUploadStatus] = useState(null);
+  const uploading = uploadStatus?.type === "uploading";
   const [submitting, setSubmitting] = useState(false);
   const contentRef = useRef(null);
 
@@ -51,7 +51,7 @@ export default function Blog() {
         setBlogs(data.data);
       }
       setError(null);
-    } catch (err) {
+    } catch {
       setError("Failed to load blogs");
     } finally {
       setLoading(false);
@@ -249,7 +249,7 @@ export default function Blog() {
       } else {
         setUploadStatus({ type: "error", message: data.message || "Failed to save blog" });
       }
-    } catch (err) {
+    } catch {
       setUploadStatus({ type: "error", message: "An error occurred while saving the blog" });
     } finally {
       setSubmitting(false);
@@ -277,13 +277,13 @@ export default function Blog() {
       } else {
         alert(data.message || "Failed to delete blog");
       }
-    } catch (err) {
+    } catch {
       alert("An error occurred while deleting the blog");
     }
   };
 
   return (
-    <div className="blog-page">
+    <div className="blog-page admin-blog">
       <div className="blog-header">
         <h2>Blog Management</h2>
         <button className="blog-create-btn" onClick={() => handleOpenForm()}>

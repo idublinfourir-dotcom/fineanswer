@@ -12,7 +12,9 @@ export default function useFadeIn() {
           observer.disconnect();
         }
       },
-      { threshold: 0.2 }
+      // Trigger once any part enters the upper 85% of the screen. A percentage
+      // threshold never fires for sections taller than the viewport allows.
+      { threshold: 0, rootMargin: "0px 0px -15% 0px" }
     );
 
     if (ref.current) observer.observe(ref.current);

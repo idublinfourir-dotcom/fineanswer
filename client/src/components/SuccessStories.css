@@ -2,7 +2,6 @@
   padding: 100px 0;
   background: #fcfdfe;
   overflow: hidden;
-  font-family: 'Inter', sans-serif;
 }
 
 .success-header {
@@ -170,11 +169,33 @@
 /* Optional: Add a subtle indicator that they are clickable on mobile 
    if you decide to keep them visible */
 @media (max-width: 768px) {
-  .control-btn { 
-    display: flex; 
+  /* Arrows sit side by side under the card instead of on top of its text */
+  .control-btn {
+    display: flex;
+    top: auto;
+    bottom: 4px;
+    transform: none;
+    width: 44px;
+    height: 44px;
     font-size: 1.5rem;
-    opacity: 0.4;
+    opacity: 0.7;
   }
-  .control-btn.prev { left: 5px; }
-  .control-btn.next { right: 5px; }
+  .control-btn:hover {
+    transform: none;
+  }
+  .control-btn.prev { left: calc(50% - 52px); }
+  .control-btn.next { right: calc(50% - 52px); }
+
+  /* Fit small phones (the fixed 340px card was cut off at 320px) */
+  .story-card-wrapper {
+    width: min(340px, calc(100vw - 32px));
+  }
+  .story-card {
+    padding: 32px 22px;
+    height: auto;
+    min-height: 480px;
+  }
+  .carousel-container {
+    height: 590px;
+  }
 }

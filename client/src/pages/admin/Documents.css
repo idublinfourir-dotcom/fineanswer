@@ -37,7 +37,7 @@
 
 .documents-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
   gap: 20px;
 }
 
@@ -62,12 +62,18 @@
   color: #4c5c9e;
 }
 
+.document-card-header > div {
+  min-width: 0;
+}
+
 .document-card-header h3 {
+  overflow-wrap: anywhere;
   font-size: 1rem;
   margin: 0;
 }
 
 .document-card-header p {
+  overflow-wrap: anywhere;
   font-size: 0.85rem;
   color: #6b7280;
   margin: 0;

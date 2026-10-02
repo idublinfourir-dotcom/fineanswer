@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import DocumentChecklist from "./DocumentChecklist";
-import { AuthContext } from "./Provider/ContextProvider";
+import { AuthContext } from "./Provider/AuthContext";
 
 export default function DashboardHome() {
   const { user, isAdmin, getCurrentUser, loading } = useContext(AuthContext);

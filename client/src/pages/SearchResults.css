@@ -6,7 +6,6 @@
   min-height: 100vh;
   padding-top: 100px;
   background: #f0f4f8;
-  font-family: "Inter", "Segoe UI", sans-serif;
   color: #1e293b;
 }
 
@@ -99,6 +98,9 @@
   font-family: inherit;
   cursor: pointer;
   width: 100%;
+  margin-top: 6px;
+  padding: 10px;
+  border-radius: 10px;
   -webkit-appearance: none;
 }
 

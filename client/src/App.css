@@ -1,13 +1,36 @@
+/* Site-wide reset and font (Mulish is loaded in index.html) */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Mulish", sans-serif;
 }
 
 html, body, #root {
   width: 100%;
-  height: 100%;
-  overflow-x: hidden; /* remove unwanted horizontal scrollbar */
+  min-height: 100%;
   background-color: #ffffff;
   color: #213547;
+}
+
+/* Stop anything from widening the page on phones. `clip` (unlike `hidden`) doesn't
+   create a scroll container, so the window keeps scrolling. Don't put height: 100%
+   back on html/body/#root: that made #root the scroller and broke scroll-to-top. */
+html {
+  overflow-x: clip;
+}
+
+body {
+  overflow-x: hidden; /* fallback: Safari < 16 has no clip */
+  overflow-x: clip;
+}
+
+/* iOS Safari zooms the page into any focused field whose text is under 16px.
+   Keep form text at 16px on phones; page styles set smaller sizes with more specific selectors. */
+@media (max-width: 768px) {
+  input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="file"]),
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
 }

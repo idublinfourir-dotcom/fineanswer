@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { FaEnvelope, FaPaperPlane } from "react-icons/fa";
 import axios from "axios";
 import { API_BASE_URL } from "../config/api";
-import { AuthContext } from "./Provider/ContextProvider";
+import { AuthContext } from "./Provider/AuthContext";
 import "./Messages.css";
 
 // Basic email format validation (valid structure so we can reply)
