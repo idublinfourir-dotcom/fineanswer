@@ -9,7 +9,8 @@ import Services from "./components/Services";
 import SuccessStories from "./components/SuccessStories";
 import Navbar3 from "./components/navbar3";
 import useFadeIn from "./hooks/useFadeIn";
-import { AuthContext } from "./pages/Provider/ContextProvider";
+import { AuthContext } from "./pages/Provider/AuthContext";
+import { scrollToSection } from "./utils/scrollToSection";
 
 import "./LandingPage.css";
 import uni1 from "./assets/DCU.jpg";
@@ -38,7 +39,6 @@ export default function LandingPage() {
 
   // Popup state
   const [showPopup, setShowPopup] = useState(false);
-  const [popupShownBefore, setPopupShownBefore] = useState(false);
 
   // Search state
   const [selectedLevel, setSelectedLevel] = useState("");
@@ -98,10 +98,7 @@ export default function LandingPage() {
       const hash = window.location.hash.slice(1); // Remove '#' prefix
       if (hash) {
         setTimeout(() => {
-          const element = document.getElementById(hash);
-          if (element) {
-            element.scrollIntoView({ behavior: "smooth", block: "start" });
-          }
+          scrollToSection(document.getElementById(hash));
         }, 100);
       }
     };
@@ -157,7 +154,7 @@ export default function LandingPage() {
           observer.disconnect();
         }
       },
-      { threshold: 0.5 },
+      { threshold: 0, rootMargin: "0px 0px -20% 0px" },
     );
     if (statsRef.current) observer.observe(statsRef.current);
     return () => observer.disconnect();
@@ -169,8 +166,6 @@ export default function LandingPage() {
 
     // Check if popup has been shown before
     const hasShownPopup = localStorage.getItem("popupShown");
-    setPopupShownBefore(!!hasShownPopup);
-
     if (hasShownPopup) return;
 
     const timer = setTimeout(() => {
@@ -372,12 +367,7 @@ export default function LandingPage() {
 
             <button
               className="cta-consult"
-              onClick={() => {
-                const contactSection = document.getElementById("contact");
-                if (contactSection) {
-                  contactSection.scrollIntoView({ behavior: "smooth" });
-                }
-              }}
+              onClick={() => scrollToSection(document.getElementById("contact"))}
             >
               Book Consultation
             </button>
@@ -486,7 +476,7 @@ export default function LandingPage() {
 
       {/* FOOTER */}
       <footer>
-        <p>© 2025 FineAnswer Study Abroad Consultancy. All rights reserved.</p>
+        <p>© {new Date().getFullYear()} FineAnswer Study Abroad Consultancy. All rights reserved.</p>
       </footer>
 
       {showPopup && !loading && !user && (
@@ -494,6 +484,7 @@ export default function LandingPage() {
           <div className="modern-popup">
             <button
               className="popup-close"
+              aria-label="Close"
               onClick={() => {
                 setShowPopup(false);
                 localStorage.setItem("popupShown", "true");

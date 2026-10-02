@@ -11,7 +11,7 @@ export default function PaymentSuccess() {
         <section className="payment-card payment-result-card success">
           <h1 className="payment-title">Payment Successful</h1>
           <p className="payment-subtitle">
-            Your payment hkkas been completed successfully. Thank you for choosing
+            Your payment has been completed successfully. Thank you for choosing
             FineAnswer!
           </p>
           <Link to="/" className="payment-btn">

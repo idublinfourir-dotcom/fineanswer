@@ -8,7 +8,6 @@
 body {
   margin: 0;
   background: var(--bg);
-  font-family: "Inter", sans-serif;
 }
 
 .dashboard-layout {
@@ -383,22 +382,32 @@ body {
     display: none;
   }
 
+  /* Row 1: burger on the left, bell + user on the right. Row 2: full-width search. */
+  .topbar {
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+  }
+
   .dashboard-topbar-titleRow {
-    gap: 8px;
-    min-width: 0;
+    display: contents;
   }
 
   .dashboard-topbar-titleRow input {
+    order: 1;
+    flex: 1 0 100%;
     min-width: 0;
-  }
-
-  .topbar {
-    flex-wrap: wrap;
-    gap: 12px;
   }
 
   .topbar input {
     max-width: 100%;
+  }
+
+  /* Fill the rest of row 1 so a long name truncates instead of wrapping */
+  .topbar-right {
+    flex: 1 1 0;
+    justify-content: flex-end;
+    min-width: 0;
   }
 }
 
@@ -477,10 +486,30 @@ body {
   outline-offset: 2px;
 }
 
-.avatar {
+.topbar .user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.topbar .user > span:last-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.topbar .avatar {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background: var(--primary);
   color: white;
-  padding: 8px;
+  font-size: 14px;
+  font-weight: 600;
   border-radius: 50%;
 }
 

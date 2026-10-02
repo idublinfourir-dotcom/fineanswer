@@ -21,7 +21,7 @@ export default function Career() {
         } else {
           setError("Failed to load jobs");
         }
-      } catch (_err) {
+      } catch {
         setError("Network error occurred");
       } finally {
         setLoading(false);

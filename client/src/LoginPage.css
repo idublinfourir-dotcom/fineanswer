@@ -1,15 +1,3 @@
-/* RESET */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html, body, #root {
-  height: 100%;
-  font-family: 'Poppins', sans-serif;
-}
-
 /* MAIN CONTAINER */
 .login-container {
   width: 100vw;
@@ -21,7 +9,7 @@ html, body, #root {
 }
 
 /* LOGIN BOX */
-.login-box {
+.login-container .login-box {
   width: 100%;
   max-width: none;
   height: 100vh;
@@ -33,12 +21,12 @@ html, body, #root {
 }
 
 /* LEFT PANEL */
-.login-left {
+.login-container .login-left {
   flex: 65%;
   position: relative;
 }
 
-.login-left .overlay {
+.login-container .login-left .overlay {
   position: absolute;
   inset: 0;
   background: rgba(0,0,0,0.55);
@@ -50,7 +38,7 @@ html, body, #root {
   padding: 70px;
 }
 
-.login-left h1 {
+.login-container .login-left h1 {
   font-size: 2.6rem;
   margin-bottom: 20px;
   color: #ffffff;
@@ -59,7 +47,7 @@ html, body, #root {
   text-align: left;
 }
 
-.login-left p {
+.login-container .login-left p {
   max-width: 760px;
   width: 100%;
   font-size: 1.1rem;
@@ -69,7 +57,7 @@ html, body, #root {
 }
 
 /* RIGHT PANEL */
-.login-right {
+.login-container .login-right {
   flex: 35%;
   background: linear-gradient(145deg, #e0f2fe, #f0f9ff);
   display: flex;
@@ -78,7 +66,7 @@ html, body, #root {
 }
 
 /* CARD */
-.login-card {
+.login-container .login-card {
   width: 100%;
   max-width: 380px;
   background: rgba(255,255,255,0.75);
@@ -90,25 +78,25 @@ html, body, #root {
 }
 
 /* HEADINGS */
-.login-card h2 {
+.login-container .login-card h2 {
   color: #0369a1;
   font-size: 2rem;
   margin-bottom: 10px;
 }
 
-.login-subtext {
+.login-container .login-subtext {
   font-size: 0.95rem;
   color: #0c4a6e;
   margin-bottom: 30px;
 }
 
 /* INPUTS */
-.input-group {
+.login-container .input-group {
   width: 100%;
   margin-bottom: 18px;
 }
 
-.input-group input {
+.login-container .input-group input {
   width: 100%;
   padding: 14px 16px;
   border-radius: 10px;
@@ -117,13 +105,13 @@ html, body, #root {
   font-size: 0.95rem;
 }
 
-.input-group input:focus {
+.login-container .input-group input:focus {
   outline: none;
   border-color: #38bdf8;
   box-shadow: 0 0 0 3px rgba(56,189,248,0.3);
 }
 
-.options {
+.login-container .options {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -132,31 +120,31 @@ html, body, #root {
   font-size: 0.85rem;
 }
 
-.options label {
+.login-container .options label {
   display: flex;
   align-items: center;
   gap: 6px;
   cursor: pointer;
 }
 
-.options input[type="checkbox"] {
+.login-container .options input[type="checkbox"] {
   accent-color: #0284c7;
   width: 14px;
   height: 14px;
 }
 
-.options a {
+.login-container .options a {
   color: #0284c7;
   text-decoration: none;
   font-weight: 500;
 }
 
-.options a:hover {
+.login-container .options a:hover {
   text-decoration: underline;
 }
 
 /* BUTTON */
-.login-btn {
+.login-container .login-btn {
   width: 100%;
   padding: 14px;
   border: none;
@@ -168,12 +156,12 @@ html, body, #root {
   transition: 0.3s;
 }
 
-.login-btn:hover {
+.login-container .login-btn:hover {
   transform: translateY(-2px);
 }
 
 /* DIVIDER */
-.login-divider {
+.login-container .login-divider {
   margin: 10px 0;
   color: #64748b;
   width: 100%;
@@ -184,7 +172,7 @@ html, body, #root {
 }
 
 /* GOOGLE BUTTON */
-.google-btn {
+.login-container .google-btn {
   width: 100%;
   padding: 12px;
   border-radius: 10px;
@@ -201,13 +189,13 @@ html, body, #root {
   transition: all 0.3s ease;
 }
 
-.google-btn:hover {
+.login-container .google-btn:hover {
   background: #f8fafc;
   border-color: #94a3b8;
   transform: translateY(-1px);
 }
 
-.google-btn .google-icon {
+.login-container .google-btn .google-icon {
   width: 20px;
   height: 20px;
   display: block;
@@ -216,69 +204,69 @@ html, body, #root {
 }
 
 /* MESSAGES */
-.success-msg, .error-msg {
+.login-container .success-msg, .login-container .error-msg {
   margin-top: 15px;
   padding: 10px;
   border-radius: 8px;
   font-size: 0.85rem;
 }
 
-.success-msg {
+.login-container .success-msg {
   background: #d1e7dd;
   color: #0f5132;
 }
 
-.error-msg {
+.login-container .error-msg {
   background: #f8d7da;
   color: #842029;
 }
 
 /* SIGNUP TEXT */
-.signup-text {
+.login-container .signup-text {
   margin-top: 20px;
   font-size: 0.9rem;
   color: #64748b;
 }
 
-.signup-link {
+.login-container .signup-link {
   color: #0284c7;
   font-weight: 600;
   cursor: pointer;
   text-decoration: underline;
 }
 
-.signup-link:hover {
+.login-container .signup-link:hover {
   color: #0369a1;
 }
 
 /* RESPONSIVE */
 @media (max-width: 900px) {
-  .login-box {
+  .login-container .login-box {
     flex-direction: column;
     height: auto;
     border-radius: 0;
   }
 
-  .login-left {
+  .login-container .login-left {
     display: none;
   }
 
-  .login-right {
+  .login-container .login-right {
     width: 100%;
     padding: 40px 20px;
     min-height: 100vh;
   }
 
-  .login-card {
+  .login-container .login-card {
     max-width: 100%;
     padding: 35px 25px;
   }
 
-  .login-card h2 {
+  .login-container .login-card h2 {
     font-size: 1.75rem;
   }
 
-  .login-subtext {
+  .login-container .login-subtext {
     font-size: 0.9rem;
   }
 }
@@ -288,86 +276,86 @@ html, body, #root {
     background: #fff;
   }
 
-  .login-box {
+  .login-container .login-box {
     border-radius: 0;
     box-shadow: none;
   }
 
-  .login-right {
+  .login-container .login-right {
     padding: 30px 15px;
   }
 
-  .login-card {
+  .login-container .login-card {
     padding: 30px 20px;
     border-radius: 15px;
   }
 
-  .login-card h2 {
+  .login-container .login-card h2 {
     font-size: 1.5rem;
     margin-bottom: 8px;
   }
 
-  .login-subtext {
+  .login-container .login-subtext {
     font-size: 0.85rem;
     margin-bottom: 25px;
   }
 
-  .input-group {
+  .login-container .input-group {
     margin-bottom: 15px;
   }
 
-  .input-group input {
+  .login-container .input-group input {
     padding: 12px 14px;
     font-size: 0.9rem;
   }
 
-  .options {
+  .login-container .options {
     font-size: 0.8rem;
     margin: 14px 0 20px;
   }
 
-  .login-btn {
+  .login-container .login-btn {
     padding: 12px;
     font-size: 0.95rem;
   }
 
-  .google-btn {
+  .login-container .google-btn {
     padding: 11px;
     font-size: 0.9rem;
   }
 
-  .google-btn .google-icon {
+  .login-container .google-btn .google-icon {
     width: 18px;
     height: 18px;
     font-size: 18px;
   }
 
-  .login-divider {
+  .login-container .login-divider {
     margin: 18px 0;
     font-size: 0.85rem;
   }
 
-  .signup-text {
+  .login-container .signup-text {
     font-size: 0.85rem;
     margin-top: 18px;
   }
 }
 
 @media (max-width: 480px) {
-  .login-card {
+  .login-container .login-card {
     padding: 25px 18px;
   }
 
-  .login-card h2 {
+  .login-container .login-card h2 {
     font-size: 1.4rem;
   }
 
-  .input-group input {
+  .login-container .input-group input {
     padding: 11px 12px;
   }
 
-  .login-btn,
-  .google-btn {
+  .login-container .login-btn,
+  .login-container .google-btn {
     padding: 11px;
   }
 }

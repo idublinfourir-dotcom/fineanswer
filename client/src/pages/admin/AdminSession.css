@@ -2,20 +2,20 @@
   padding: 2rem;
 }
 
-.admin-session-header {
+.admin-session-page .admin-session-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 2rem;
 }
 
-.admin-session-header h2 {
+.admin-session-page .admin-session-header h2 {
   font-size: 2rem;
   color: #2d3748;
   font-weight: 600;
 }
 
-.add-video-btn {
+.admin-session-page .add-video-btn {
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -29,18 +29,18 @@
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.add-video-btn:hover {
+.admin-session-page .add-video-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
 }
 
-.video-grid {
+.admin-session-page .video-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 1.5rem;
 }
 
-.video-card {
+.admin-session-page .video-card {
   background: white;
   border-radius: 12px;
   overflow: hidden;
@@ -49,12 +49,12 @@
   cursor: pointer;
 }
 
-.video-card:hover {
+.admin-session-page .video-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
-.video-thumbnail-wrapper {
+.admin-session-page .video-thumbnail-wrapper {
   position: relative;
   width: 100%;
   height: 180px;
@@ -62,13 +62,13 @@
   overflow: hidden;
 }
 
-.video-thumbnail-wrapper img {
+.admin-session-page .video-thumbnail-wrapper img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.video-overlay {
+.admin-session-page .video-overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -82,21 +82,21 @@
   transition: opacity 0.3s;
 }
 
-.video-card:hover .video-overlay {
+.admin-session-page .video-card:hover .video-overlay {
   opacity: 1;
 }
 
-.youtube-icon {
+.admin-session-page .youtube-icon {
   font-size: 3rem;
   color: #ff0000;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
 }
 
-.video-card-content {
+.admin-session-page .video-card-content {
   padding: 1.25rem;
 }
 
-.video-card-content h3 {
+.admin-session-page .video-card-content h3 {
   font-size: 1.1rem;
   font-weight: 600;
   color: #2d3748;
@@ -107,7 +107,7 @@
   overflow: hidden;
 }
 
-.video-card-content p {
+.admin-session-page .video-card-content p {
   font-size: 0.9rem;
   color: #718096;
   margin-bottom: 1rem;
@@ -117,15 +117,15 @@
   overflow: hidden;
 }
 
-.video-card-actions {
+.admin-session-page .video-card-actions {
   display: flex;
   gap: 0.75rem;
   padding-top: 1rem;
   border-top: 1px solid #e2e8f0;
 }
 
-.edit-video-btn,
-.delete-video-btn {
+.admin-session-page .edit-video-btn,
+.admin-session-page .delete-video-btn {
   flex: 1;
   display: flex;
   align-items: center;
@@ -139,51 +139,51 @@
   transition: all 0.2s;
 }
 
-.edit-video-btn {
+.admin-session-page .edit-video-btn {
   background: #edf2f7;
   color: #4299e1;
 }
 
-.edit-video-btn:hover {
+.admin-session-page .edit-video-btn:hover {
   background: #4299e1;
   color: white;
 }
 
-.delete-video-btn {
+.admin-session-page .delete-video-btn {
   background: #fed7d7;
   color: #e53e3e;
 }
 
-.delete-video-btn:hover {
+.admin-session-page .delete-video-btn:hover {
   background: #e53e3e;
   color: white;
 }
 
-.video-loading,
-.video-empty {
+.admin-session-page .video-loading,
+.admin-session-page .video-empty {
   text-align: center;
   padding: 4rem 2rem;
   color: #718096;
 }
 
-.video-loading .spinner {
+.admin-session-page .video-loading .spinner {
   font-size: 3rem;
   color: #667eea;
   animation: spin 1s linear infinite;
 }
 
-.video-empty svg {
+.admin-session-page .video-empty svg {
   font-size: 4rem;
   margin-bottom: 1rem;
   color: #ff0000;
 }
 
-.video-empty h3 {
+.admin-session-page .video-empty h3 {
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
 }
 
-.video-error {
+.admin-session-page .video-error {
   background: #fee2e2;
   color: #991b1b;
   padding: 1rem;
@@ -191,7 +191,7 @@
   text-align: center;
 }
 
-.video-form-modal {
+.admin-session-page .video-form-modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -205,7 +205,7 @@
   padding: 1rem;
 }
 
-.video-form-container {
+.admin-session-page .video-form-container {
   background: white;
   padding: 2rem;
   border-radius: 12px;
@@ -216,7 +216,7 @@
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
 }
 
-.video-form-header {
+.admin-session-page .video-form-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -225,13 +225,13 @@
   border-bottom: 2px solid #e2e8f0;
 }
 
-.video-form-header h3 {
+.admin-session-page .video-form-header h3 {
   font-size: 1.5rem;
   color: #2d3748;
   font-weight: 600;
 }
 
-.close-modal-btn {
+.admin-session-page .close-modal-btn {
   background: none;
   border: none;
   font-size: 2rem;
@@ -248,31 +248,31 @@
   transition: background 0.2s, color 0.2s;
 }
 
-.close-modal-btn:hover {
+.admin-session-page .close-modal-btn:hover {
   background: #f7fafc;
   color: #2d3748;
 }
 
-.video-form {
+.admin-session-page .video-form {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
 
-.form-group {
+.admin-session-page .form-group {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
-.form-group label {
+.admin-session-page .form-group label {
   font-weight: 600;
   color: #2d3748;
   font-size: 0.95rem;
 }
 
-.form-group input,
-.form-group textarea {
+.admin-session-page .form-group input,
+.admin-session-page .form-group textarea {
   padding: 0.75rem;
   border: 2px solid #e2e8f0;
   border-radius: 8px;
@@ -281,26 +281,26 @@
   transition: border-color 0.2s;
 }
 
-.form-group input:focus,
-.form-group textarea:focus {
+.admin-session-page .form-group input:focus,
+.admin-session-page .form-group textarea:focus {
   outline: none;
   border-color: #667eea;
 }
 
-.form-hint {
+.admin-session-page .form-hint {
   font-size: 0.85rem;
   color: #718096;
   font-style: italic;
 }
 
-.form-actions {
+.admin-session-page .form-actions {
   display: flex;
   gap: 1rem;
   margin-top: 1rem;
 }
 
-.submit-btn,
-.cancel-btn {
+.admin-session-page .submit-btn,
+.admin-session-page .cancel-btn {
   flex: 1;
   padding: 0.875rem;
   border: none;
@@ -311,27 +311,27 @@
   transition: all 0.2s;
 }
 
-.submit-btn {
+.admin-session-page .submit-btn {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
 }
 
-.submit-btn:hover:not(:disabled) {
+.admin-session-page .submit-btn:hover:not(:disabled) {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
 }
 
-.submit-btn:disabled {
+.admin-session-page .submit-btn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
 
-.cancel-btn {
+.admin-session-page .cancel-btn {
   background: #e2e8f0;
   color: #2d3748;
 }
 
-.cancel-btn:hover {
+.admin-session-page .cancel-btn:hover {
   background: #cbd5e0;
 }
 
@@ -346,17 +346,17 @@
     padding: 1rem;
   }
 
-  .admin-session-header {
+  .admin-session-page .admin-session-header {
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
   }
 
-  .video-grid {
+  .admin-session-page .video-grid {
     grid-template-columns: 1fr;
   }
 
-  .video-form-container {
+  .admin-session-page .video-form-container {
     padding: 1.5rem;
   }
 }

@@ -52,7 +52,7 @@ export default function Blog() {
 
   if (loading) {
     return (
-      <div className="blog-page">
+      <div className="blog-page public-blog">
         <div className="blog-loader">Loading articles</div>
       </div>
     );
@@ -60,7 +60,7 @@ export default function Blog() {
 
   if (error) {
     return (
-      <div className="blog-page">
+      <div className="blog-page public-blog">
         <div className="blog-nav-container">
           <button className="blog-back-btn" onClick={() => navigate("/")}>
             <span className="arrow">←</span> Back to Home
@@ -74,7 +74,7 @@ export default function Blog() {
   }
 
   return (
-    <div className="blog-page">
+    <div className="blog-page public-blog">
       {/* Navigation Layer */}
       <div className="blog-nav-container">
         <button className="blog-back-btn" onClick={() => navigate("/")}>

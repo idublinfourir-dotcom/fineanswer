@@ -1,5 +1,6 @@
 import React from "react";
 import "./Services.css";
+import { scrollToSection } from "../utils/scrollToSection";
 
 import { 
   FaFileAlt, 
@@ -15,10 +16,7 @@ import {
 
 const Services = () => {
   const handleSendEnquiry = () => {
-    const contactSection = document.getElementById('contact');
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
-    }
+    scrollToSection(document.getElementById('contact'));
   };
 
   const cards = [

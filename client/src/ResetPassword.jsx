@@ -76,7 +76,7 @@ export default function ResetPassword() {
       <div className="reset-password-page">
         <div className="reset-password-card">
           <h2>Invalid Link</h2>
-          <p className="error-msg">Please request a new OTP from the forgot password page.</p>
+          <p className="message error-msg">Please request a new OTP from the forgot password page.</p>
           <Link to="/forgot-password" className="back-link">
             Request New OTP
           </Link>
@@ -93,7 +93,7 @@ export default function ResetPassword() {
 
         {success ? (
           <div className="success-state">
-            <p className="success-msg">{message?.text}</p>
+            <p className="message success-msg">{message?.text}</p>
             <p>Redirecting to login...</p>
           </div>
         ) : (

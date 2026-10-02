@@ -131,7 +131,7 @@ export default function SuccessStoryForm({ isOpen, onClose, onSuccess, initialSt
   if (!isOpen) return null;
 
   return (
-    <div className="modal-overlay" onClick={onClose}>
+    <div className="modal-overlay story-form-modal" onClick={onClose}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <div className="modal-header">
           <h2>{isEdit ? "Edit Success Story" : "Create Success Story"}</h2>

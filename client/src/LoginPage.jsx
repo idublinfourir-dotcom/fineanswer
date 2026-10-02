@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { API_BASE_URL } from "./config/api";
 import "./LoginPage.css";
-import { AuthContext } from "./pages/Provider/ContextProvider";
+import { AuthContext } from "./pages/Provider/AuthContext";
 
 export default function LoginPage() {
   const navigate = useNavigate();

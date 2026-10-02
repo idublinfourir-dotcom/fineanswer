@@ -2,7 +2,7 @@
   padding: 20px;
 }
 
-.messages-card {
+.messages-page .messages-card {
   max-width: 720px;
   background: white;
   border-radius: 16px;
@@ -10,7 +10,7 @@
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
 }
 
-.messages-title {
+.messages-page .messages-title {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -20,18 +20,18 @@
   margin-bottom: 18px;
 }
 
-.form-grid-wrap {
+.messages-page .form-grid-wrap {
   display: block;
 }
 
 /* Form grid */
-.form-grid {
+.messages-page .form-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
 }
 
-.messages-success {
+.messages-page .messages-success {
   margin-top: 12px;
   padding: 10px 12px;
   background: #d1fae5;
@@ -40,7 +40,7 @@
   font-size: 13px;
 }
 
-.messages-error {
+.messages-page .messages-error {
   margin-top: 12px;
   padding: 10px 12px;
   background: #fee2e2;
@@ -49,18 +49,18 @@
   font-size: 13px;
 }
 
-.form-grid .full {
+.messages-page .form-grid .full {
   grid-column: span 2;
 }
 
-label {
+.messages-page label {
   font-size: 12px;
   color: #555;
 }
 
-input,
-select,
-textarea {
+.messages-page input,
+.messages-page select,
+.messages-page textarea {
   width: 100%;
   padding: 10px;
   border: 1px solid #e5e7eb;
@@ -71,7 +71,9 @@ textarea {
 }
 
 /* Button */
-.send-btn {
+.messages-page .send-btn {
+  width: 100%;
+  justify-content: center;
   margin-top: 20px;
   background: linear-gradient(135deg, #4f5bd5, #6c7cff);
   color: white;
@@ -83,4 +85,23 @@ textarea {
   gap: 8px;
   cursor: pointer;
   font-size: 14px;
+}
+
+/* One field per row on phones (two columns cut off name, email and country) */
+@media (max-width: 600px) {
+  .messages-page {
+    padding: 16px 12px;
+  }
+
+  .messages-page .messages-card {
+    padding: 18px;
+  }
+
+  .messages-page .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .messages-page .form-grid .full {
+    grid-column: auto;
+  }
 }

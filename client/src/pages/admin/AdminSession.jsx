@@ -43,7 +43,7 @@ export default function AdminSession() {
         setVideos(data.data);
       }
       setError(null);
-    } catch (err) {
+    } catch {
       setError("Failed to load videos");
     } finally {
       setLoading(false);
@@ -59,7 +59,7 @@ export default function AdminSession() {
         setEvents(data.data);
       }
       setEventsError(null);
-    } catch (_err) {
+    } catch {
       setEventsError("Failed to load events");
     } finally {
       setEventsLoading(false);
@@ -162,7 +162,7 @@ export default function AdminSession() {
       } else {
         alert(data.message || "Failed to save video");
       }
-    } catch (err) {
+    } catch {
       alert("An error occurred while saving the video");
     } finally {
       setSubmitting(false);
@@ -190,7 +190,7 @@ export default function AdminSession() {
       } else {
         alert(data.message || "Failed to delete video");
       }
-    } catch (err) {
+    } catch {
       alert("An error occurred while deleting the video");
     }
   };
@@ -231,7 +231,7 @@ export default function AdminSession() {
       } else {
         alert(data.message || "Failed to save event");
       }
-    } catch (_err) {
+    } catch {
       alert("An error occurred while saving the event");
     } finally {
       setEventSubmitting(false);
@@ -259,7 +259,7 @@ export default function AdminSession() {
       } else {
         alert(data.message || "Failed to delete event");
       }
-    } catch (_err) {
+    } catch {
       alert("An error occurred while deleting the event");
     }
   };

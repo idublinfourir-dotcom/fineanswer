@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
-import { AuthContext } from "../pages/Provider/ContextProvider";
+import { AuthContext } from "../pages/Provider/AuthContext";
 import "../css/navbar3.css";
 import logo from "../images/logo.png";
 
@@ -53,7 +53,7 @@ export default function Navbar() {
           <img src={logo} alt="Logo" />
         </div>
 
-        <nav className={`nav-menu ${menuOpen ? "open" : ""}`}>
+        <nav id="site-nav-menu" className={`nav-menu ${menuOpen ? "open" : ""}`}>
           <NavLink
             to="/"
             onClick={() => {
@@ -104,14 +104,18 @@ export default function Navbar() {
           )}
         </nav>
 
-        <div
+        <button
+          type="button"
           className="hamburger"
           onClick={() => setMenuOpen(!menuOpen)}
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={menuOpen}
+          aria-controls="site-nav-menu"
         >
           <span></span>
           <span></span>
           <span></span>
-        </div>
+        </button>
       </div>
     </header>
   );

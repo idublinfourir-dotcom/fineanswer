@@ -1,9 +1,9 @@
 import { PageFlip } from "page-flip";
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import page1 from "../assets/1.png";
-import page2 from "../assets/2.png";
-import page3 from "../assets/3.png";
-import page4 from "../assets/4.png";
+import page1 from "../assets/brochure-1.jpg";
+import page2 from "../assets/brochure-2.jpg";
+import page3 from "../assets/brochure-3.jpg";
+import page4 from "../assets/brochure-4.jpg";
 import "./BrochureFlipBook.css";
 
 const BROCHURE_IMAGES = [page1, page2, page3, page4];

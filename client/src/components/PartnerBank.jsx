@@ -46,7 +46,7 @@ const PartnerBank = () => {
   <div className="bubbles-wrapper">
     {partners.map((item, index) => (
       <div key={index} className={`bank-bubble p${index + 1}`}>
-        <img src={item.logo} alt={item.name} />
+        <img src={item.logo} alt={item.name} loading="lazy" />
       </div>
     ))}
   </div>

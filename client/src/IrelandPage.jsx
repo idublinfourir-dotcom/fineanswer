@@ -1,14 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./ireland.css";
+import "./countryPage.css";
 import irelandBg from "./images/ireland.jpg";
-import Navbar from "./components/navbar2";
+import Navbar3 from "./components/navbar3";
 
 export default function IrelandPage() {
   return (
     <div className="ireland-page">
       {/* Navbar */}
-      <Navbar />
+      <Navbar3 />
 
       {/* Hero Section */}
       <section

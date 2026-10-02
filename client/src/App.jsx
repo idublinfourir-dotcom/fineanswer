@@ -1,5 +1,12 @@
 import React, { useEffect, useContext } from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+  useLocation,
+  useNavigationType,
+} from "react-router-dom";
 import LandingPage from "./LandingPage";
 import ReadMoreInfo from "./pages/ReadMoreInfo";
 import AustraliaPage from "./AustraliaPage";
@@ -28,7 +35,7 @@ import AdminSession from "./pages/admin/AdminSession";
 import StudentsInfo from "./pages/admin/StudentsInfo";
 import AdminDocuments from "./pages/admin/Documents";
 import ProtectedRoute from "./components/ProtectedRoute";
-import { AuthContext } from "./pages/Provider/ContextProvider";
+import { AuthContext } from "./pages/Provider/AuthContext";
 import PublicBlog from "./pages/Blog";
 import BlogDetail from "./pages/BlogDetail";
 import Career from "./pages/Career";
@@ -48,6 +55,20 @@ import "./App.css";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
+
+// Start each new page at the top. Hash links scroll themselves, and back/forward
+// navigation (POP) keeps the browser's own scroll restoration.
+function ScrollToTop() {
+  const { pathname, hash } = useLocation();
+  const navigationType = useNavigationType();
+
+  useEffect(() => {
+    if (hash || navigationType === "POP") return;
+    window.scrollTo(0, 0);
+  }, [pathname, hash, navigationType]);
+
+  return null;
+}
 
 function AppRoutes() {
   const { user, isAdmin, loading } = useContext(AuthContext);
@@ -162,6 +183,7 @@ function AppRoutes() {
 export default function App() {
   return (
     <Router>
+      <ScrollToTop />
       <AppRoutes />
     </Router>
   );

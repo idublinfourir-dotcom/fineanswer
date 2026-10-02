@@ -1,4 +1,4 @@
-.modal-overlay {
+.story-form-modal.modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -12,7 +12,7 @@
   padding: 20px;
 }
 
-.modal-content {
+.story-form-modal .modal-content {
   background: #fff;
   border-radius: 12px;
   width: 100%;
@@ -22,7 +22,7 @@
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
 }
 
-.modal-header {
+.story-form-modal .modal-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -30,13 +30,13 @@
   border-bottom: 1px solid #e5e7eb;
 }
 
-.modal-header h2 {
+.story-form-modal .modal-header h2 {
   margin: 0;
   color: #1f2937;
   font-size: 24px;
 }
 
-.close-btn {
+.story-form-modal .close-btn {
   background: none;
   border: none;
   font-size: 24px;
@@ -49,15 +49,15 @@
   transition: color 0.2s;
 }
 
-.close-btn:hover {
+.story-form-modal .close-btn:hover {
   color: #1f2937;
 }
 
-.success-story-form {
+.story-form-modal .success-story-form {
   padding: 24px;
 }
 
-.error-message {
+.story-form-modal .error-message {
   background: #fee2e2;
   color: #991b1b;
   padding: 12px;
@@ -66,11 +66,11 @@
   font-size: 14px;
 }
 
-.form-group {
+.story-form-modal .form-group {
   margin-bottom: 20px;
 }
 
-.form-group label {
+.story-form-modal .form-group label {
   display: block;
   margin-bottom: 8px;
   color: #374151;
@@ -78,15 +78,15 @@
   font-size: 14px;
 }
 
-.form-help-text {
+.story-form-modal .form-help-text {
   margin: 0 0 12px 0;
   color: #6b7280;
   font-size: 13px;
   line-height: 1.5;
 }
 
-.form-group input,
-.form-group textarea {
+.story-form-modal .form-group input,
+.story-form-modal .form-group textarea {
   width: 100%;
   padding: 10px 12px;
   border: 1px solid #d1d5db;
@@ -96,35 +96,35 @@
   font-family: inherit;
 }
 
-.form-group input:focus,
-.form-group textarea:focus {
+.story-form-modal .form-group input:focus,
+.story-form-modal .form-group textarea:focus {
   outline: none;
   border-color: #5b6bbf;
   box-shadow: 0 0 0 3px rgba(91, 107, 191, 0.1);
 }
 
-.form-group textarea {
+.story-form-modal .form-group textarea {
   resize: vertical;
   min-height: 100px;
 }
 
-.form-row {
+.story-form-modal .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
 }
 
-.image-upload-container {
+.story-form-modal .image-upload-container {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-.file-input {
+.story-form-modal .file-input {
   display: none;
 }
 
-.file-label {
+.story-form-modal .file-label {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -138,17 +138,17 @@
   font-size: 14px;
 }
 
-.file-label:hover {
+.story-form-modal .file-label:hover {
   border-color: #5b6bbf;
   color: #5b6bbf;
   background: #f3f4f6;
 }
 
-.image-preview {
+.story-form-modal .image-preview {
   margin-top: 8px;
 }
 
-.image-preview img {
+.story-form-modal .image-preview img {
   width: 100%;
   max-height: 400px;
   object-fit: contain;
@@ -157,7 +157,7 @@
   background: #f9fafb;
 }
 
-.form-actions {
+.story-form-modal .form-actions {
   display: flex;
   gap: 12px;
   justify-content: flex-end;
@@ -166,8 +166,8 @@
   border-top: 1px solid #e5e7eb;
 }
 
-.btn-cancel,
-.btn-submit {
+.story-form-modal .btn-cancel,
+.story-form-modal .btn-submit {
   padding: 10px 20px;
   border-radius: 8px;
   font-size: 14px;
@@ -180,30 +180,30 @@
   gap: 8px;
 }
 
-.btn-cancel {
+.story-form-modal .btn-cancel {
   background: #f3f4f6;
   color: #374151;
 }
 
-.btn-cancel:hover {
+.story-form-modal .btn-cancel:hover {
   background: #e5e7eb;
 }
 
-.btn-submit {
+.story-form-modal .btn-submit {
   background: #5b6bbf;
   color: #fff;
 }
 
-.btn-submit:hover:not(:disabled) {
+.story-form-modal .btn-submit:hover:not(:disabled) {
   background: #4a5aaf;
 }
 
-.btn-submit:disabled {
+.story-form-modal .btn-submit:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
 
-.spinner {
+.story-form-modal .spinner {
   animation: spin 1s linear infinite;
 }
 
@@ -217,11 +217,11 @@
 }
 
 @media (max-width: 640px) {
-  .form-row {
+  .story-form-modal .form-row {
     grid-template-columns: 1fr;
   }
   
-  .modal-content {
+  .story-form-modal .modal-content {
     max-width: 100%;
     margin: 10px;
   }

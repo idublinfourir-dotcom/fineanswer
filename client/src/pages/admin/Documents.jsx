@@ -57,7 +57,7 @@ export default function AdminDocuments() {
       } else {
         setError("Failed to load documents");
       }
-    } catch (_err) {
+    } catch {
       setError("Failed to load documents");
     } finally {
       setLoading(false);
@@ -98,7 +98,7 @@ export default function AdminDocuments() {
       } else {
         alert(data.message || "Failed to delete documents");
       }
-    } catch (_err) {
+    } catch {
       alert("An error occurred while deleting. Please try again.");
     } finally {
       setDeletingId(null);
@@ -129,7 +129,7 @@ export default function AdminDocuments() {
         window.open(blobUrl, "_blank", "noopener,noreferrer");
       }
       setTimeout(() => URL.revokeObjectURL(blobUrl), 5000);
-    } catch (_err) {
+    } catch {
       // Fallback: open Cloudinary URL directly
       if (action === "download") {
         const a = document.createElement("a");
@@ -178,7 +178,7 @@ export default function AdminDocuments() {
       } else {
         alert(data.message || "Failed to submit feedback");
       }
-    } catch (_err) {
+    } catch {
       alert("An error occurred. Please try again.");
     } finally {
       setSubmittingFeedback(false);
