@@ -85,6 +85,11 @@ SMTP_PORT=587
 SMTP_USER=your-email@gmail.com
 SMTP_PASS=your_gmail_app_password
 SMTP_FROM=FineAnswer <your-email@gmail.com>
+
+# Course search (/api/programs/search reads the "Final Sheet" tab)
+GOOGLE_SPREADSHEET_ID=sheet_id_or_full_url
+# Service account key as a one-line JSON string. Share the sheet with its client_email.
+GOOGLE_APPLICATION_CREDENTIALS_JSON={"type":"service_account",...}
 ```
 
 **Client (`client/.env` or `client/.env.local`)**
@@ -110,7 +115,7 @@ cd client && npm run dev
 ```
 
 - Frontend: http://localhost:5173
-- Backend: https://fine-answer.vercel.app
+- Backend: http://localhost:5000
 
 ### 4. Build for production
 
@@ -145,6 +150,7 @@ cd ../server && npm start
 | client   | `npm run build` | Production build      |
 | server   | `npm run dev`   | Start with nodemon    |
 | server   | `npm start`     | Start production      |
+| server   | `npm test`      | Auth security tests   |
 
 ## License
 

@@ -15,9 +15,6 @@ export default defineConfig({
             if (id.includes('firebase')) {
               return 'firebase-vendor';
             }
-            if (id.includes('gsap') || id.includes('lottie')) {
-              return 'animation-vendor';
-            }
           }
         },
       },

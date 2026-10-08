@@ -1,5 +1,6 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
+const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
 const nodemailer = require("nodemailer");
 const { ObjectId } = require("mongodb");
@@ -18,6 +19,30 @@ const isAdminUser = (email) =>
 
 const generateToken = (userId) =>
   jwt.sign({ userId }, JWT_SECRET, { expiresIn: "30d" });
+
+// Firebase ID tokens are RS256 JWTs signed by Google with rotating public keys.
+// The project ID is public (it ships in the client bundle).
+const FIREBASE_PROJECT_ID = process.env.FIREBASE_PROJECT_ID || "fineanswer-e4c30";
+const FIREBASE_CERTS_URL =
+  "https://www.googleapis.com/robot/v1/metadata/x509/securetoken@system.gserviceaccount.com";
+let firebaseCerts = { keys: {}, expiresAt: 0 };
+
+const verifyFirebaseIdToken = async (idToken) => {
+  if (Date.now() > firebaseCerts.expiresAt) {
+    const res = await fetch(FIREBASE_CERTS_URL);
+    if (!res.ok) throw new Error(`Firebase certs fetch failed: ${res.status}`);
+    const maxAge = Number(/max-age=(\d+)/.exec(res.headers.get("cache-control"))?.[1] || 3600);
+    firebaseCerts = { keys: await res.json(), expiresAt: Date.now() + maxAge * 1000 };
+  }
+  const kid = jwt.decode(idToken, { complete: true })?.header?.kid;
+  const cert = firebaseCerts.keys[kid];
+  if (!cert) throw new Error("Unknown Firebase signing key");
+  return jwt.verify(idToken, cert, {
+    algorithms: ["RS256"],
+    audience: FIREBASE_PROJECT_ID,
+    issuer: `https://securetoken.google.com/${FIREBASE_PROJECT_ID}`,
+  });
+};
 
 // Helper: send OTP email
 const sendOTPemail = async (email, otp) => {
@@ -150,12 +175,12 @@ router.post(
       });
     }
 
-    const otp = String(Math.floor(100000 + Math.random() * 900000));
+    const otp = String(crypto.randomInt(100000, 1000000));
     const resetOtpExpiry = new Date(Date.now() + 10 * 60 * 1000);
 
     await collections.users.updateOne(
       { _id: user._id },
-      { $set: { resetOtp: otp, resetOtpExpiry, updatedAt: new Date() } },
+      { $set: { resetOtp: otp, resetOtpExpiry, resetOtpAttempts: 0, updatedAt: new Date() } },
     );
 
     try {
@@ -192,13 +217,17 @@ router.post(
       });
     }
 
-    const user = await collections.users.findOne({
-      email,
-      resetOtp: otp,
-      resetOtpExpiry: { $gt: new Date() },
-    });
+    // Every attempt counts (atomically), so a 6-digit OTP can't be brute-forced.
+    const user = await collections.users.findOneAndUpdate(
+      {
+        email,
+        resetOtpExpiry: { $gt: new Date() },
+        resetOtpAttempts: { $not: { $gte: 5 } },
+      },
+      { $inc: { resetOtpAttempts: 1 } },
+    );
 
-    if (!user) {
+    if (!user || user.resetOtp !== String(otp)) {
       return res.status(400).json({
         success: false,
         message: "Invalid or expired OTP. Please request a new one.",
@@ -212,7 +241,7 @@ router.post(
       { _id: user._id },
       {
         $set: { password: hashedPassword, updatedAt: new Date() },
-        $unset: { resetOtp: "", resetOtpExpiry: "" },
+        $unset: { resetOtp: "", resetOtpExpiry: "", resetOtpAttempts: "" },
       },
     );
 
@@ -235,14 +264,36 @@ router.post(
       });
     }
 
-    const { email, googleId, name, picture } = req.body;
+    const { idToken, name, picture } = req.body;
 
-    if (!email || !googleId) {
+    if (typeof idToken !== "string" || !idToken) {
       return res.status(400).json({
         success: false,
-        message: "Email and googleId are required",
+        message: "Please refresh the page and sign in with Google again.",
       });
     }
+
+    // Identity comes only from the Google-signed token, never from the request body.
+    let claims;
+    try {
+      claims = await verifyFirebaseIdToken(idToken);
+    } catch (err) {
+      console.warn("[Auth] Google token rejected:", err.message);
+      return res
+        .status(401)
+        .json({ success: false, message: "Google sign-in could not be verified. Please try again." });
+    }
+    if (
+      claims.firebase?.sign_in_provider !== "google.com" ||
+      !claims.sub ||
+      !claims.email ||
+      claims.email_verified !== true
+    ) {
+      return res
+        .status(401)
+        .json({ success: false, message: "Google sign-in could not be verified. Please try again." });
+    }
+    const { email, sub: googleId } = claims;
 
     let user = await collections.users.findOne({ googleId });
 

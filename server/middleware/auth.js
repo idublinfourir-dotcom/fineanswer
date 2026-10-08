@@ -2,8 +2,9 @@ const { ObjectId } = require("mongodb");
 const jwt = require("jsonwebtoken");
 const { collections } = require("../config/db");
 
-const JWT_SECRET =
-  process.env.JWT_SECRET || "your-secret-key-change-this-in-production";
+// No fallback: a guessable default would let anyone forge admin tokens.
+const JWT_SECRET = process.env.JWT_SECRET;
+if (!JWT_SECRET) throw new Error("JWT_SECRET is not set");
 
 // Wraps async route handlers so rejected promises pass to Express error handler
 const asyncHandler = (fn) => (req, res, next) =>

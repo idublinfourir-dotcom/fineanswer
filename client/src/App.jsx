@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { Suspense, lazy, useEffect, useContext } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -8,53 +8,84 @@ import {
   useNavigationType,
 } from "react-router-dom";
 import LandingPage from "./LandingPage";
-import ReadMoreInfo from "./pages/ReadMoreInfo";
-import AustraliaPage from "./AustraliaPage";
-import UKPage from "./UKPage";
-import IrelandPage from "./IrelandPage";
+// Page JS is lazy-loaded below, but page CSS leaks across pages, so every
+// stylesheet is still loaded up front in the same order as before the split.
+// A new page's CSS can simply be imported by that page.
+import "./components/BrochureFlipBook.css";
+import "./pages/ReadMoreInfo.css";
+import "./countryPage.css";
+import "./LoginPage.css";
+import "./RegisterPage.css";
+import "./ForgotPassword.css";
+import "./ResetPassword.css";
+import "./components/Sidebar.css";
+import "./css/dashboard.css";
+import "./css/documentChecklist.css";
+import "./pages/Sessions.css";
+import "./pages/Profile.css";
+import "./pages/Messages.css";
+import "./styles/admin.css";
+import "./pages/admin/AdminDashboard.css";
+import "./pages/admin/Analytics.css";
+import "./components/admin/SuccessStoryForm.css";
+import "./pages/admin/SuccessStories.css";
+import "./pages/admin/Blog.css";
+import "./pages/admin/Career.css";
+import "./components/ProgressTracker.css";
+import "./pages/admin/TrackerUpdate.css";
+import "./pages/admin/AdminSession.css";
+import "./pages/admin/StudentsInfo.css";
+import "./pages/admin/Documents.css";
+import "./styles/Blog.css";
+import "./styles/blogdetails.css";
+import "./pages/Payment.css";
+import "./pages/EnglishProficiency.css";
+import "./pages/AppLaunch.css";
+import "./pages/SuccessStoryDetail.css";
+import "./pages/SearchResults.css";
+const ReadMoreInfo = lazy(() => import("./pages/ReadMoreInfo"));
+const AustraliaPage = lazy(() => import("./AustraliaPage"));
+const UKPage = lazy(() => import("./UKPage"));
+const IrelandPage = lazy(() => import("./IrelandPage"));
 
-import Login from "./LoginPage";
-import Register from "./RegisterPage";
-import ForgotPassword from "./ForgotPassword";
-import ResetPassword from "./ResetPassword";
-import DashboardLayout from "./pages/DashboardLayout";
-import DashboardHome from "./pages/DashboardHome";
-import DocumentChecklist from "./pages/DocumentChecklist";
-import Sessions from "./pages/Sessions";
-import Profile from "./pages/Profile";
-import Messages from "./pages/Messages";
+const Login = lazy(() => import("./LoginPage"));
+const Register = lazy(() => import("./RegisterPage"));
+const ForgotPassword = lazy(() => import("./ForgotPassword"));
+const ResetPassword = lazy(() => import("./ResetPassword"));
+const DashboardLayout = lazy(() => import("./pages/DashboardLayout"));
+const DashboardHome = lazy(() => import("./pages/DashboardHome"));
+const DocumentChecklist = lazy(() => import("./pages/DocumentChecklist"));
+const Sessions = lazy(() => import("./pages/Sessions"));
+const Profile = lazy(() => import("./pages/Profile"));
+const Messages = lazy(() => import("./pages/Messages"));
 
-import AdminLayout from "./layouts/AdminLayout";
-import AdminDashboard from "./pages/admin/AdminDashboard";
-import Analytics from "./pages/admin/Analytics";
-import SuccessStories from "./pages/admin/SuccessStories";
-import Blog from "./pages/admin/Blog";
-import AdminCareer from "./pages/admin/Career";
-import TrackerUpdate from "./pages/admin/TrackerUpdate";
-import AdminSession from "./pages/admin/AdminSession";
-import StudentsInfo from "./pages/admin/StudentsInfo";
-import AdminDocuments from "./pages/admin/Documents";
+const AdminLayout = lazy(() => import("./layouts/AdminLayout"));
+const AdminDashboard = lazy(() => import("./pages/admin/AdminDashboard"));
+const Analytics = lazy(() => import("./pages/admin/Analytics"));
+const SuccessStories = lazy(() => import("./pages/admin/SuccessStories"));
+const Blog = lazy(() => import("./pages/admin/Blog"));
+const AdminCareer = lazy(() => import("./pages/admin/Career"));
+const TrackerUpdate = lazy(() => import("./pages/admin/TrackerUpdate"));
+const AdminSession = lazy(() => import("./pages/admin/AdminSession"));
+const StudentsInfo = lazy(() => import("./pages/admin/StudentsInfo"));
+const AdminDocuments = lazy(() => import("./pages/admin/Documents"));
 import ProtectedRoute from "./components/ProtectedRoute";
 import { AuthContext } from "./pages/Provider/AuthContext";
-import PublicBlog from "./pages/Blog";
-import BlogDetail from "./pages/BlogDetail";
-import Career from "./pages/Career";
-import Payment from "./pages/Payment";
-import EnglishProficiency from "./pages/EnglishProficiency";
-import AppLaunch from "./pages/AppLaunch";
-import ProgressTrackerPage from "./pages/ProgressTrackerPage";
-import PaymentSuccess from "./pages/PaymentSuccess";
-import PaymentFail from "./pages/PaymentFail";
-import PaymentCancel from "./pages/PaymentCancel";
-import SuccessStoryDetail from "./pages/SuccessStoryDetail";
-import SearchResults from "./pages/SearchResults";
-import JobDetail from "./pages/JobDetail";
+const PublicBlog = lazy(() => import("./pages/Blog"));
+const BlogDetail = lazy(() => import("./pages/BlogDetail"));
+const Career = lazy(() => import("./pages/Career"));
+const Payment = lazy(() => import("./pages/Payment"));
+const EnglishProficiency = lazy(() => import("./pages/EnglishProficiency"));
+const AppLaunch = lazy(() => import("./pages/AppLaunch"));
+const ProgressTrackerPage = lazy(() => import("./pages/ProgressTrackerPage"));
+const PaymentSuccess = lazy(() => import("./pages/PaymentSuccess"));
+const PaymentFail = lazy(() => import("./pages/PaymentFail"));
+const PaymentCancel = lazy(() => import("./pages/PaymentCancel"));
+const SuccessStoryDetail = lazy(() => import("./pages/SuccessStoryDetail"));
+const SearchResults = lazy(() => import("./pages/SearchResults"));
+const JobDetail = lazy(() => import("./pages/JobDetail"));
 
 import "./App.css";
-
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger);
 
 // Start each new page at the top. Hash links scroll themselves, and back/forward
 // navigation (POP) keeps the browser's own scroll restoration.
@@ -73,22 +104,8 @@ function ScrollToTop() {
 function AppRoutes() {
   const { user, isAdmin, loading } = useContext(AuthContext);
 
-  useEffect(() => {
-    gsap.utils.toArray(".reveal").forEach((elem) => {
-      gsap.from(elem, {
-        opacity: 0,
-        y: 50,
-        duration: 0.8,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: elem,
-          start: "top 85%",
-        },
-      });
-    });
-  }, []);
-
   return (
+    <Suspense fallback={null}>
     <Routes>
       <Route path="/read-more-info" element={<ReadMoreInfo />} />
       {/* Public Routes */}
@@ -177,6 +194,7 @@ function AppRoutes() {
       {/* Default redirect */}
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
+    </Suspense>
   );
 }
 

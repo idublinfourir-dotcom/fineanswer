@@ -1,4 +1,5 @@
-const { google } = require("googleapis");
+// Sheets-only client: the full googleapis package added ~1.4s to every cold start.
+const { sheets: sheetsApi, auth: googleAuth } = require("@googleapis/sheets");
 
 // Credentials: use env var in production (no key file on server), or local JSON file in dev
 let credentials = null;
@@ -18,12 +19,12 @@ if (!credentials) {
   }
 }
 
-const auth = new google.auth.GoogleAuth({
+const auth = new googleAuth.GoogleAuth({
   credentials: credentials || undefined,
   scopes: ["https://www.googleapis.com/auth/spreadsheets.readonly"],
 });
 
-const sheets = google.sheets({ version: "v4", auth });
+const sheets = sheetsApi({ version: "v4", auth });
 
 // Extract the raw spreadsheet ID from a full URL or bare ID.
 // Strips any trailing #gid=... fragment that comes from copy-pasting a sheet URL.

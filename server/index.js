@@ -33,6 +33,18 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Reject Mongo query operators ({"$ne": ...}) smuggled in through request bodies,
+// e.g. an OTP of {"$ne": ""} that would match any stored code.
+const hasMongoOperator = (v) =>
+  v !== null &&
+  typeof v === "object" &&
+  Object.entries(v).some(([k, x]) => k.startsWith("$") || hasMongoOperator(x));
+app.use((req, res, next) =>
+  hasMongoOperator(req.body)
+    ? res.status(400).json({ success: false, message: "Invalid request body" })
+    : next(),
+);
+
 // ── Static routes (no DB required) ─────────────────────────────────────────
 app.get("/", (_req, res) => res.send("Running Bhaai Running"));
 

@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { API_BASE_URL } from "../config/api";
 import "../styles/blogdetails.css";
 import PdfPages from "../components/PdfPages";
+import { cldImg } from "../utils/cloudinary";
 
 const renderRichContent = (content) => {
   if (!content) {
@@ -145,7 +146,7 @@ export default function BlogDetail() {
         {blog.image && (
           <div className="blog-detail-image-container">
             <img
-              src={blog.image}
+              src={cldImg(blog.image, 1600)}
               alt={blog.title}
               className="blog-detail-image"
             />

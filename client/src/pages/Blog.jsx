@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { API_BASE_URL } from "../config/api";
 import "../styles/Blog.css";
 import PdfPages from "../components/PdfPages";
+import { cldImg } from "../utils/cloudinary";
 
 export default function Blog() {
   const [blogs, setBlogs] = useState([]);
@@ -104,7 +105,7 @@ export default function Blog() {
                 <div className="blog-card-image">
                   {blog.image ? (
                     <img
-                      src={blog.image}
+                      src={cldImg(blog.image, 800)}
                       alt={blog.title}
                       loading="lazy"
                     />

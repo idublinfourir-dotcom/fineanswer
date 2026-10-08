@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { FaPlus, FaTrash, FaEdit, FaSpinner } from "react-icons/fa";
 import SuccessStoryForm from "../../components/admin/SuccessStoryForm";
 import { getSuccessStories, deleteSuccessStory } from "../../services/successStoriesApi";
+import { cldImg } from "../../utils/cloudinary";
 import "./SuccessStories.css";
 
 export default function SuccessStories() {
@@ -105,7 +106,7 @@ export default function SuccessStories() {
             return (
               <div key={storyId} className="admin-story-card">
                 <div className="admin-story-image">
-                  <img src={story.image} alt={story.name || "Success story"} />
+                  <img src={cldImg(story.image, 600)} alt={story.name || "Success story"} loading="lazy" />
                 </div>
                 <div className="admin-story-content">
                   <h3>{story.name}</h3>

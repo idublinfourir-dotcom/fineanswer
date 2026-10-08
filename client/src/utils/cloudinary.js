@@ -96,3 +96,10 @@ export const uploadDocumentToCloudinary = async (file) => {
     throw new Error('Failed to upload document. Please try again.');
   }
 };
+
+// Ask Cloudinary for a resized copy in the browser's best format (webp/avif)
+// instead of the full-size original. Non-Cloudinary URLs pass through untouched.
+export const cldImg = (url, width) =>
+  url?.startsWith("https://res.cloudinary.com/")
+    ? url.replace("/image/upload/", `/image/upload/f_auto,q_auto,c_limit,w_${width}/`)
+    : url;
