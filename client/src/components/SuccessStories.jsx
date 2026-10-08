@@ -4,6 +4,7 @@ import { FaUniversity, FaMapMarkerAlt } from "react-icons/fa";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import "./SuccessStories.css";
 import { getSuccessStories } from "../services/successStoriesApi";
+import { cldImg } from "../utils/cloudinary";
 
 export default function SuccessStories() {
   const [stories, setStories] = useState([]);
@@ -109,7 +110,7 @@ export default function SuccessStories() {
               >
                 <div className="story-card">
                   <div className="user-profile">
-                    <img src={story.image} alt={story.name} className="user-avatar" />
+                    <img src={cldImg(story.image, 200)} alt={story.name} className="user-avatar" loading="lazy" />
                   </div>
                   
                   <div className="card-content">

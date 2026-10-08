@@ -11,7 +11,7 @@ import {
     FaUser,
 } from "react-icons/fa";
 import { API_BASE_URL } from "../../config/api";
-import { uploadDocumentToCloudinary, uploadImageToCloudinary } from "../../utils/cloudinary";
+import { cldImg, uploadDocumentToCloudinary, uploadImageToCloudinary } from "../../utils/cloudinary";
 import "./Blog.css";
 
 export default function Blog() {
@@ -315,7 +315,7 @@ export default function Blog() {
             return (
               <div key={blogId} className="blog-card">
                 {blog.image ? (
-                  <img src={blog.image} alt={blog.title} className="blog-card-image" />
+                  <img src={cldImg(blog.image, 800)} alt={blog.title} className="blog-card-image" loading="lazy" />
                 ) : (
                   <div className="blog-card-image" />
                 )}

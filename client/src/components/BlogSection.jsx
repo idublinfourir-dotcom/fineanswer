@@ -3,6 +3,7 @@ import { FaArrowRight, FaCalendar, FaNewspaper, FaUser } from "react-icons/fa";
 import { API_BASE_URL } from "../config/api";
 import "./BlogSection.css";
 import PdfPages from "./PdfPages";
+import { cldImg } from "../utils/cloudinary";
 
 export default function BlogSection() {
   const [blogs, setBlogs] = useState([]);
@@ -80,7 +81,7 @@ export default function BlogSection() {
             <article key={blog._id} className="blog-item">
               <div className="blog-image-wrapper">
                 {blog.image ? (
-                  <img src={blog.image} alt={blog.title} className="blog-image" />
+                  <img src={cldImg(blog.image, 800)} alt={blog.title} className="blog-image" loading="lazy" />
                 ) : blog.pdf ? (
                   <PdfPages
                     url={blog.pdf}

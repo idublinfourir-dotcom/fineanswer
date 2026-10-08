@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useLocation, Link } from "react-router-dom";
 import { getSuccessStories } from "../services/successStoriesApi";
+import { cldImg } from "../utils/cloudinary";
 import { FaUniversity, FaMapMarkerAlt } from "react-icons/fa";
 import "./SuccessStoryDetail.css";
 
@@ -38,7 +39,7 @@ export default function SuccessStoryDetail() {
   return (
     <div className="story-detail-wrapper">
       <div className="story-detail-card">
-        <img src={story.image} alt={story.name} className="detail-avatar" />
+        <img src={cldImg(story.image, 400)} alt={story.name} className="detail-avatar" />
         <h2>{story.name}</h2>
         <p className="meta"><FaUniversity /> {story.university}</p>
         <p className="meta"><FaMapMarkerAlt /> {story.country}</p>

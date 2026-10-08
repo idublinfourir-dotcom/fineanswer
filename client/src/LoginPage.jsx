@@ -100,6 +100,8 @@ export default function LoginPage() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          // The server trusts only this Google-signed token for identity.
+          idToken: await result.user.getIdToken(),
           email: result.user.email,
           googleId: result.user.uid,
           name: result.user.displayName || result.user.email.split("@")[0],
