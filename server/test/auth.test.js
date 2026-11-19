@@ -171,6 +171,14 @@ test("reset-password blocks operator injection and brute force", async () => {
   assert.equal(users.find((u) => u._id === "u2").password, "old");
 });
 
+test("forgot-password never puts the email in the redirect URL", async () => {
+  const email = "nobody+tag@example.com"; // unknown account: no OTP mail is sent
+  const r = await post("/api/auth/forgot-password", { email });
+  assert.equal(r.status, 200);
+  assert.equal(r.body.redirectTo, "/reset-password");
+  assert.ok(!JSON.stringify(r.body).includes("example.com"));
+});
+
 test("reset-password works with the right OTP", async () => {
   users.push({
     _id: "u3", email: "c@d.com", authProvider: "email", password: "old",

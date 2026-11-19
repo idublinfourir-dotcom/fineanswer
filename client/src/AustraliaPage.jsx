@@ -1,10 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { pageSeo, useSeo } from "./seo";
 import "./countryPage.css";
 import australiaBg from "./images/aus.jpg";
 import Navbar3 from "./components/navbar3";
 
 export default function AustraliaPage() {
+  useSeo(pageSeo("/australia"));
   return (
     <div className="australia-page">
       {/* Navbar */}

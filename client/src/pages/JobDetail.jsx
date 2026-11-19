@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
+import { snippet, useSeo } from "../seo";
 import { FaArrowLeft, FaMapMarkerAlt, FaBriefcase, FaCalendarAlt } from "react-icons/fa";
 import { API_BASE_URL } from "../config/api";
 import { AuthContext } from "./Provider/AuthContext";
@@ -16,6 +17,14 @@ export default function JobDetail() {
   const [applySuccess, setApplySuccess] = useState(false);
   const [applyError, setApplyError] = useState(null);
   const [formData, setFormData] = useState({ documents: "", notes: "" });
+
+  useSeo(
+    job && {
+      title: `${job.title}${job.company ? ` at ${job.company}` : ""} | FineAnswer Careers`,
+      description: snippet(job.description) || `${job.title} job listing on FineAnswer Careers.`,
+      path: `/jobs/${job._id}`,
+    },
+  );
 
   useEffect(() => {
     if (!id) return;

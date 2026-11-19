@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { SITE, blogIdFrom, blogPath, snippet, useSeo } from "../seo";
 import { API_BASE_URL } from "../config/api";
 import "../styles/blogdetails.css";
 import PdfPages from "../components/PdfPages";
@@ -36,10 +37,39 @@ const renderRichContent = (content) => {
 };
 
 export default function BlogDetail() {
-  const { id } = useParams();
+  const { id: param } = useParams();
+  const id = blogIdFrom(param); // /blog/<slug>-<id>, or an old /blog/<id> link
+  const navigate = useNavigate();
   const [blog, setBlog] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(Boolean(id));
+  const [error, setError] = useState(id ? null : "Blog not found");
+
+  // Old /blog/<id> links and renamed posts move to the current address.
+  useEffect(() => {
+    if (blog && blogPath(blog) !== `/blog/${param}`) navigate(blogPath(blog), { replace: true });
+  }, [blog, param, navigate]);
+
+  useSeo(
+    blog && {
+      title: `${blog.title} | FineAnswer Study Abroad`,
+      description: snippet(blog.content),
+      path: blogPath(blog),
+      type: "article",
+      image: blog.image || undefined,
+      jsonLd: {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        headline: blog.title,
+        description: snippet(blog.content),
+        image: blog.image || undefined,
+        datePublished: blog.createdAt,
+        dateModified: blog.updatedAt || blog.createdAt,
+        author: { "@type": "Person", name: blog.author || "FineAnswer Study Abroad" },
+        publisher: { "@type": "Organization", name: "FineAnswer Study Abroad", logo: `${SITE}/logo.svg` },
+        mainEntityOfPage: SITE + blogPath(blog),
+      },
+    },
+  );
 
   useEffect(() => {
     if (!id) return;

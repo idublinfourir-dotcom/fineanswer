@@ -8,6 +8,13 @@
     }
   ],
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/sitemap.xml", "destination": "https://fineanswer-server.vercel.app/sitemap.xml" },
+    { "source": "/ireland", "destination": "/ireland.html" },
+    { "source": "/uk", "destination": "/uk.html" },
+    { "source": "/australia", "destination": "/australia.html" },
+    { "source": "/blog", "destination": "/blog.html" },
+    { "source": "/career", "destination": "/career.html" },
+    { "source": "/read-more-info", "destination": "/read-more-info.html" },
+    { "source": "/(.*)", "destination": "/spa.html" }
   ]
 }

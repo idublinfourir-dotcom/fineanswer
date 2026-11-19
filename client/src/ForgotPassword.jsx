@@ -32,7 +32,7 @@ export default function ForgotPassword() {
         text: result.message || "Check your email for the OTP.",
       });
       if (result.redirectTo && !result.googleAccount) {
-        setTimeout(() => navigate(result.redirectTo), 1500);
+        setTimeout(() => navigate(result.redirectTo, { state: { email } }), 1500);
       }
       setEmail("");
     } catch (error) {

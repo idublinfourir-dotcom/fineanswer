@@ -1,10 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { pageSeo, useSeo } from "./seo";
 import "./countryPage.css";
 import ukBg from "./images/uk.jpg"; // Make sure the image exists in src/images
 import Navbar3 from "./components/navbar3";
 
 export default function UKPage() {
+  useSeo(pageSeo("/uk"));
   return (
     <div className="uk-page">
       {/* Navbar */}

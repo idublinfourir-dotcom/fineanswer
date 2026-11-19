@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useLocation, Link } from "react-router-dom";
 import { getSuccessStories } from "../services/successStoriesApi";
 import { cldImg } from "../utils/cloudinary";
+import { snippet, useSeo } from "../seo";
 import { FaUniversity, FaMapMarkerAlt } from "react-icons/fa";
 import "./SuccessStoryDetail.css";
 
@@ -11,6 +12,15 @@ export default function SuccessStoryDetail() {
   const [story, setStory] = useState(location.state?.story || null);
   const [loading, setLoading] = useState(!story);
   const [error, setError] = useState(null);
+
+  useSeo(
+    story && {
+      title: `${story.name}: ${[story.program, story.university].filter(Boolean).join(" at ")} | FineAnswer Success Stories`,
+      description: snippet(story.story),
+      path: story._id ? `/success-story/${story._id}` : undefined,
+      image: story.image || undefined,
+    },
+  );
 
   useEffect(() => {
     if (story) return;
@@ -40,7 +50,7 @@ export default function SuccessStoryDetail() {
     <div className="story-detail-wrapper">
       <div className="story-detail-card">
         <img src={cldImg(story.image, 400)} alt={story.name} className="detail-avatar" />
-        <h2>{story.name}</h2>
+        <h1>{story.name}</h1>
         <p className="meta"><FaUniversity /> {story.university}</p>
         <p className="meta"><FaMapMarkerAlt /> {story.country}</p>
         <p className="program">{story.program}</p>

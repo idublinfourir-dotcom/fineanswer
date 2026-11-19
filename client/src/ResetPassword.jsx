@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { API_BASE_URL } from "./config/api";
 import "./ResetPassword.css";
 
 export default function ResetPassword() {
   const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
-  const email = searchParams.get("email");
+  // Passed in router state by ForgotPassword, never in the URL.
+  const email = useLocation().state?.email;
 
   const [otp, setOtp] = useState("");
   const [password, setPassword] = useState("");

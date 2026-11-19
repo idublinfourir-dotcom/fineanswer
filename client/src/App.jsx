@@ -71,6 +71,10 @@ const StudentsInfo = lazy(() => import("./pages/admin/StudentsInfo"));
 const AdminDocuments = lazy(() => import("./pages/admin/Documents"));
 import ProtectedRoute from "./components/ProtectedRoute";
 import { AuthContext } from "./pages/Provider/AuthContext";
+import { Analytics as VercelAnalytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
+import { redactUrl } from "./utils/analytics";
+const NotFound = lazy(() => import("./pages/NotFound"));
 const PublicBlog = lazy(() => import("./pages/Blog"));
 const BlogDetail = lazy(() => import("./pages/BlogDetail"));
 const Career = lazy(() => import("./pages/Career"));
@@ -191,18 +195,28 @@ function AppRoutes() {
         <Route path="documents" element={<AdminDocuments />} />
       </Route>
 
-      {/* Default redirect */}
-      <Route path="*" element={<Navigate to="/" replace />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
     </Suspense>
+  );
+}
+
+// Shared with src/entry-server.jsx, which renders it inside a StaticRouter at build time.
+export function AppContent() {
+  return (
+    <>
+      <ScrollToTop />
+      <AppRoutes />
+      <VercelAnalytics beforeSend={redactUrl} />
+      <SpeedInsights beforeSend={redactUrl} />
+    </>
   );
 }
 
 export default function App() {
   return (
     <Router>
-      <ScrollToTop />
-      <AppRoutes />
+      <AppContent />
     </Router>
   );
 }

@@ -20,7 +20,7 @@ export default function BrochureFlipBook() {
   const wrapperRef = useRef(null);
   const containerRef = useRef(null);
   const pageFlipRef  = useRef(null);
-  const [usePortrait, setUsePortrait] = useState(() => window.innerWidth < 768);
+  const [usePortrait, setUsePortrait] = useState(() => typeof window !== "undefined" && window.innerWidth < 768);
   const [zoom, setZoom]               = useState(1);
   const [bookHeight, setBookHeight] = useState(0);
   const [fitScale, setFitScale] = useState(1);
