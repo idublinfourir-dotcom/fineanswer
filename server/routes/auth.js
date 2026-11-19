@@ -3,7 +3,6 @@ const bcrypt = require("bcryptjs");
 const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
 const nodemailer = require("nodemailer");
-const { ObjectId } = require("mongodb");
 const { collections } = require("../config/db");
 const {
   asyncHandler,
@@ -160,7 +159,8 @@ router.post(
       success: true,
       message:
         "If an account exists with this email, you will receive an OTP shortly.",
-      redirectTo: `/reset-password?email=${encodeURIComponent(email)}`,
+      // No email in the URL: it would end up in analytics, browser history and logs.
+      redirectTo: "/reset-password",
     };
 
     const user = await collections.users.findOne({ email });

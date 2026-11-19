@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { FaArrowLeft, FaChevronRight, FaExternalLinkAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { pageSeo, useSeo } from "../seo";
 import { API_BASE_URL } from "../config/api";
 import { IRELAND_JOB_LINKS } from "../constants/irelandJobLinks";
 import "./admin/Career.css";
 
 export default function Career() {
+  useSeo(pageSeo("/career"));
   const navigate = useNavigate();
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true);

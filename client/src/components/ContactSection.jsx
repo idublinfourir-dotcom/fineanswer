@@ -11,10 +11,11 @@ import {
 const FORMSUBMIT_URL = "https://formsubmit.co/fineanswer2025@gmail.com";
 
 export default function ContactSection() {
-  const thankYouUrl =
-    typeof window !== "undefined"
-      ? `${window.location.origin}${window.location.pathname || "/"}${window.location.hash || "#contact"}?submitted=1`
-      : "";
+  // Filled in on submit, not render: the homepage is pre-rendered at build time with no window.
+  const setThankYouUrl = (e) => {
+    const { origin, pathname, hash } = window.location;
+    e.currentTarget.elements._next.value = `${origin}${pathname || "/"}${hash || "#contact"}?submitted=1`;
+  };
 
   return (
     <section className="contact-wrapper" id="contact">
@@ -98,13 +99,12 @@ export default function ContactSection() {
             className="contact-form"
             action={FORMSUBMIT_URL}
             method="POST"
+            onSubmit={setThankYouUrl}
           >
             <input type="hidden" name="_subject" value="FineAnswer: Free Consultation Request" />
             <input type="hidden" name="_replyto" value="email" />
             <input type="hidden" name="_captcha" value="false" />
-            {thankYouUrl && (
-              <input type="hidden" name="_next" value={thankYouUrl} />
-            )}
+            <input type="hidden" name="_next" />
 
             <div className="form-group">
               <label htmlFor="contact-name">Full Name</label>

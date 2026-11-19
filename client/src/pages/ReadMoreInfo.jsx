@@ -1,10 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { pageSeo, useSeo } from "../seo";
 import BrochureFlipBook from "../components/BrochureFlipBook";
 import "./ReadMoreInfo.css";
 import fineImg from "../assets/fine.jpg";
 
 export default function ReadMoreInfo() {
+  useSeo(pageSeo("/read-more-info"));
   const navigate = useNavigate();
 
   return (

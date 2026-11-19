@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { blogPath, pageSeo, useSeo } from "../seo";
 import { API_BASE_URL } from "../config/api";
 import "../styles/Blog.css";
 import PdfPages from "../components/PdfPages";
 import { cldImg } from "../utils/cloudinary";
 
 export default function Blog() {
+  useSeo(pageSeo("/blog"));
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -51,14 +53,6 @@ export default function Blog() {
       : plain;
   };
 
-  if (loading) {
-    return (
-      <div className="blog-page public-blog">
-        <div className="blog-loader">Loading articles</div>
-      </div>
-    );
-  }
-
   if (error) {
     return (
       <div className="blog-page public-blog">
@@ -94,7 +88,9 @@ export default function Blog() {
 
       {/* Blog Grid */}
       <main className="blog-container">
-        {blogs.length === 0 ? (
+        {loading ? (
+          <div className="blog-loader">Loading articles</div>
+        ) : blogs.length === 0 ? (
           <div className="blog-empty">
             <p>No articles published yet. Check back soon!</p>
           </div>
@@ -129,7 +125,7 @@ export default function Blog() {
                     {truncateContent(blog.content)}
                   </p>
                   <Link
-                    to={`/blog/${blog._id}`}
+                    to={blogPath(blog)}
                     className="blog-read-more"
                     aria-label={`Read more about ${blog.title}`}
                   >

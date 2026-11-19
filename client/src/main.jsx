@@ -1,5 +1,5 @@
 import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import { createRoot, hydrateRoot } from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 import ContextProvider from './pages/Provider/ContextProvider.jsx'
@@ -16,10 +16,14 @@ window.addEventListener('vite:preloadError', () => {
   window.location.reload()
 })
 
-createRoot(document.getElementById('root')).render(
+const root = document.getElementById('root')
+const app = (
   <StrictMode>
     <ContextProvider>
       <App />
     </ContextProvider>
-  </StrictMode>,
+  </StrictMode>
 )
+// Public pages arrive pre-rendered (scripts/prerender.js): attach to that HTML instead of redrawing it.
+if (root.hasChildNodes()) hydrateRoot(root, app)
+else createRoot(root).render(app)

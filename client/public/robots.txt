@@ -12,5 +12,6 @@ Disallow: /payment
 Disallow: /payment/success
 Disallow: /payment/fail
 Disallow: /payment/cancel
+Disallow: /search-results
 
 Sitemap: https://www.fineanswer.net/sitemap.xml

@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { pageSeo, useSeo } from "./seo";
 import CEOQuote from "./components/CEOQuote";
 import ContactSection from "./components/ContactSection";
 import CountrySlider from "./components/CountrySlider";
@@ -18,6 +19,7 @@ import uni4 from "./assets/Trinity1.jpg";
 import uni2 from "./assets/UL.jpg";
 import uni3 from "./assets/setu.jpg";
 export default function LandingPage() {
+  useSeo(pageSeo("/"));
   const navigate = useNavigate();
   const { user, loading } = useContext(AuthContext);
   const [servicesRef, servicesVisible] = useFadeIn();
@@ -476,7 +478,7 @@ export default function LandingPage() {
 
       {/* FOOTER */}
       <footer>
-        <p>© {new Date().getFullYear()} FineAnswer Study Abroad Consultancy. All rights reserved.</p>
+        <p suppressHydrationWarning>© {new Date().getFullYear()} FineAnswer Study Abroad Consultancy. All rights reserved.</p>
       </footer>
 
       {showPopup && !loading && !user && (

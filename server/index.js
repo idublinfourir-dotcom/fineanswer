@@ -17,6 +17,7 @@ const documentsRouter    = require("./routes/documents");
 const adminRouter        = require("./routes/admin");
 const paymentRouter      = require("./routes/payment");
 const messagesRouter     = require("./routes/messages");
+const { sitemapRouter }  = require("./routes/sitemap");
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -69,6 +70,7 @@ const ready = connectDB()
     app.use("/api/admin",           adminRouter);
     app.use("/api",                 paymentRouter);   // /api/create-payment, /api/payment/*
     app.use("/api/send-message",    messagesRouter);
+    app.use(sitemapRouter);                          // /sitemap.xml
 
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
   })

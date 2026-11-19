@@ -1,10 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { pageSeo, useSeo } from "./seo";
 import "./countryPage.css";
 import irelandBg from "./images/ireland.jpg";
 import Navbar3 from "./components/navbar3";
 
 export default function IrelandPage() {
+  useSeo(pageSeo("/ireland"));
   return (
     <div className="ireland-page">
       {/* Navbar */}
